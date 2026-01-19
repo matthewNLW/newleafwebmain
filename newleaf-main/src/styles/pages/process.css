@@ -1,0 +1,329 @@
+/* 
+   Process Page Styles - New Leaf
+   Focus: Editorial Flow, Sticky Navigation, and Premium Typography
+*/
+
+/* 1. Page Intro */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-page-intro h1,
+.nl-page-intro .nl-intro-text,
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+/* 2. Process Editorial Layout */
+.nl-process-section {
+    padding: var(--space-3xl) 0;
+}
+
+.nl-process-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+}
+
+/* 3. Sticky Navigation */
+.nl-process-sidebar {
+    position: sticky;
+    top: calc(var(--header-height, 70px) + var(--space-3xl));
+    padding-right: var(--space-xl);
+}
+
+.nl-process-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.nl-process-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: all var(--transition-standard);
+    position: relative;
+    padding: var(--space-xs) 0;
+}
+
+.nl-nav-num {
+    font-size: var(--fs-xl);
+    font-weight: 300;
+    font-family: var(--font-heading);
+    opacity: 0.4;
+    transition: opacity var(--transition-standard);
+}
+
+.nl-nav-label {
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    opacity: 0.6;
+    transition: opacity var(--transition-standard);
+}
+
+/* Active State */
+.nl-process-nav-link.is-active .nl-nav-num {
+    color: var(--color-primary);
+    font-weight: 700;
+    opacity: 1;
+}
+
+.nl-process-nav-link.is-active .nl-nav-label {
+    color: var(--color-text-main);
+    font-weight: 700;
+    opacity: 1;
+}
+
+/* Vertical indicator line */
+.nl-process-nav-link::before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 0;
+    background-color: var(--color-primary);
+    transition: height var(--transition-standard);
+}
+
+.nl-process-nav-link.is-active::before {
+    height: 70%;
+}
+
+/* 4. Process Content Blocks */
+.nl-process-content {
+    display: flex;
+    flex-direction: column;
+    gap: 160px; /* Generous breathing room */
+}
+
+.nl-step-block {
+    scroll-margin-top: 150px;
+    opacity: 0.3;
+    transform: translateY(20px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+/* Optional: Animation for appearing blocks */
+.nl-step-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nl-step-eyebrow {
+    display: block;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    font-weight: 700;
+}
+
+.nl-step-headline {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-main);
+    max-width: 15ch;
+}
+
+.nl-step-description {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    max-width: 50ch;
+    line-height: 1.6;
+    margin-bottom: var(--space-3xl);
+}
+
+/* 5. Process Card (Roles & Outcome) */
+.nl-process-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-top: var(--space-xl);
+    background-color: transparent;
+    transition: box-shadow var(--transition-standard);
+}
+
+.nl-process-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.nl-process-roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.nl-role-col {
+    padding: var(--space-xl);
+}
+
+.nl-role-col:first-child {
+    border-right: 1px solid var(--color-border);
+}
+
+.nl-role-title {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+}
+
+/* Outcome Footer */
+.nl-process-outcome {
+    background-color: var(--color-bg-alt);
+    padding: var(--space-lg) var(--space-xl);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: var(--space-xl);
+    align-items: baseline;
+}
+
+.nl-outcome-label {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.nl-outcome-text {
+    font-size: var(--fs-md);
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+/* List Styling Update */
+.nl-minimal-list li {
+    padding: 6px 0;
+    border-bottom: none;
+    padding-left: 20px;
+}
+
+.nl-minimal-list li::before {
+    content: "•"; /* Dot instead of dash for this layout */
+    left: 0;
+    color: var(--color-border); /* Subtle dot */
+    font-weight: normal;
+}
+
+
+
+/* Responsive adjustment for card */
+@media (max-width: 768px) {
+    .nl-process-roles {
+        grid-template-columns: 1fr;
+    }
+    
+    .nl-role-col:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .nl-process-outcome {
+        flex-direction: column;
+        gap: var(--space-xs);
+    }
+}
+
+/* 6. Timeline & Collaboration Re-styling */
+.nl-timeline-card {
+    padding: var(--space-lg);
+    background: transparent;
+    border-left: 1px solid var(--color-border);
+    transition: border-color var(--transition-standard);
+}
+
+.nl-timeline-card:hover {
+    border-left-color: var(--color-primary);
+}
+
+.nl-collab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+}
+
+.nl-collab-item h4 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-sm);
+    width: fit-content;
+}
+
+/* 7. Responsive Adjustments */
+@media (max-width: 1024px) {
+    .nl-process-layout {
+        grid-template-columns: 200px 1fr;
+        gap: var(--space-2xl);
+    }
+    
+    .nl-step-headline {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .nl-process-layout {
+        display: block;
+    }
+
+    .nl-process-sidebar {
+        position: static;
+        margin-bottom: var(--space-3xl);
+        padding-right: 0;
+    }
+
+    .nl-process-nav-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: var(--space-sm);
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-xl);
+    }
+
+    .nl-process-nav-link {
+        white-space: nowrap;
+        padding: 0;
+    }
+
+    .nl-process-nav-link::before {
+        display: none;
+    }
+
+    .nl-process-content {
+        gap: 80px;
+    }
+
+    .nl-partnership-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .nl-collab-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+}

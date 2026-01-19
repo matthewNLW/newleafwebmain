@@ -1,0 +1,244 @@
+/* 
+   Explore Page Styles - New Leaf
+   Focus: Editorial list, spacing-driven, minimalist hierarchy
+*/
+
+/* 1. Page Intro */
+.nl-explore-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-explore-intro .nl-eyebrow,
+.nl-explore-intro h1,
+.nl-explore-intro .nl-intro-text {
+    color: var(--color-text-light);
+}
+
+/* 2. Theme List (Gallery Grid) */
+.nl-theme-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px; /* Gap for the border effect */
+    background-color: var(--color-border); /* Create internal borders via gap */
+    border: 1px solid var(--color-border); /* Outer border */
+}
+
+.nl-theme-item {
+    background-color: var(--color-bg-main); /* Card background */
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.nl-theme-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    height: 100%;
+}
+
+/* 3. Theme Content */
+.nl-theme-content {
+    order: 2; /* Content below visual */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.nl-theme-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.nl-theme-content h2 {
+    font-size: var(--fs-2xl);
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+.nl-theme-description {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+    flex-grow: 1; /* Push specs to bottom */
+}
+
+/* 4. Theme Details (Spec Sheet) */
+.nl-theme-details {
+    margin-top: auto; /* Pin to bottom of content area */
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: 0;
+}
+
+.nl-spec-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--fs-xs);
+}
+
+.nl-spec-item strong {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.nl-spec-item span {
+    color: var(--color-text-main);
+    font-weight: 600;
+    text-align: right;
+}
+
+/* 4b. Theme Dropdown (Feeling/Why) */
+.nl-theme-extra {
+    margin-top: var(--space-md);
+    border-top: 1px dashed var(--color-border);
+    padding-top: var(--space-sm);
+    font-size: var(--fs-xs);
+}
+
+.nl-theme-extra summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-primary);
+    list-style: none; /* Hide default arrow */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.nl-theme-extra summary::-webkit-details-marker {
+    display: none;
+}
+
+.nl-theme-extra summary::after {
+    content: '+';
+    font-weight: 400;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.nl-theme-extra[open] summary::after {
+    content: '−';
+}
+
+.nl-theme-extra summary:hover {
+    color: var(--color-primary-dark);
+}
+
+.nl-extra-content {
+    margin-top: var(--space-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.nl-extra-content p {
+    margin: 4px 0;
+}
+
+.nl-extra-content strong {
+    color: var(--color-text-main);
+} 
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 5. Removed Theme Actions */
+.nl-theme-actions {
+    display: none;
+}
+
+/* 6. Visual Signatures */
+.nl-theme-visual {
+    order: 1; /* Visual on top */
+    width: 100%;
+    margin-bottom: var(--space-md);
+}
+
+.nl-visual-signature {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16/10; /* Slightly taller for card context */
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+}
+
+/* Signatures styling remains same, mostly */
+.sig-text { font-size: 48px; }
+
+/* ... (Signature specific styles from before are kept conceptually, assuming global cascade handles them or I should re-include if I am replacing the whole block. I am replacing almost everything.) */
+
+.sig-accent {
+    position: absolute;
+    inset: 0;
+}
+
+/* Re-include sig specific logic to be safe since I'm overwriting the block */
+/* Fantasy Sig (Replaces Professional) */
+.fantasy-sig { background-color: #1a0f08; border: 1px solid rgba(212, 175, 55, 0.25); }
+.fantasy-sig .sig-text { font-family: 'Playfair Display', serif; color: #f5e6d3; } /* Parchment White */
+.fantasy-sig .sig-accent { background: linear-gradient(135deg, transparent 60%, #d4af37 100%); opacity: 0.2; }
+
+/* Nature Sig */
+.nature-sig { background-color: #1b2a22; border: 1px solid #4f6f5e; }
+.nature-sig .sig-text { font-family: 'Outfit', sans-serif; color: #e6f2e8; }
+.nature-sig .sig-accent { background: radial-gradient(circle at top right, #6bd18b 0%, transparent 70%); opacity: 0.1; }
+
+/* Retro Sig */
+.retro-sig { background-color: #111111; border: 1px solid rgba(183, 255, 207, .2); }
+.retro-sig .sig-text { font-family: 'IBM Plex Mono', monospace; color: #b7ffcf; opacity: 1; }
+.retro-sig .sig-accent { background: repeating-linear-gradient(0deg, rgba(183, 255, 207, 0.05) 0px, transparent 1px, transparent 2px); }
+
+/* Future Sig */
+.future-sig { background-color: #050612; border: 1px solid rgba(79, 209, 255, 0.22); }
+.future-sig .sig-text { font-family: 'JetBrains Mono', monospace; color: #e9f0ff; }
+.future-sig .sig-accent { background: linear-gradient(90deg, transparent 49.5%, rgba(79, 209, 255, 0.2) 50%, transparent 50.5%); background-size: 20px 20px; }
+
+/* 7. Tags */
+.nl-tag {
+    font-size: 10px;
+    padding: 4px 8px;
+}
+
+/* Responsive Scaling */
+@media (max-width: 900px) {
+    .nl-theme-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .nl-theme-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+

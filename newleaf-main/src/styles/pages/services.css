@@ -1,0 +1,202 @@
+/* 
+   Services Page Styles - New Leaf
+   Focus: Structured expertise, Clear inclusions, and Clarity
+*/
+
+/* 1. Page Intro */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/hero_services.png');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-page-intro h1,
+.nl-page-intro .nl-intro-text,
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+/* 2. Services List (Editorial Row Style) */
+.nl-services-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-xl);
+}
+
+.nl-service-item {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+    transition: var(--transition-standard);
+    cursor: pointer;
+}
+
+.nl-service-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nl-service-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.nl-service-main {
+    display: flex;
+    gap: var(--space-xl);
+    align-items: baseline;
+}
+
+.nl-service-cat {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+}
+
+.nl-service-item h3 {
+    font-size: var(--fs-2xl);
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.nl-service-item:hover h3,
+.nl-service-item.is-active h3 {
+    color: var(--color-text-main);
+}
+
+.nl-service-learn {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+    transition: transform var(--transition-standard), opacity var(--transition-fast);
+}
+
+.nl-service-item:hover .nl-service-learn {
+    opacity: 1;
+    /* No translation for the plus, just opacity */
+}
+
+/* Rotate to X when active */
+.nl-service-item.is-active .nl-service-learn {
+    transform: rotate(45deg);
+    opacity: 1;
+    color: var(--color-primary); /* Highlight when open */
+}
+
+/* 2.5 Progressive Disclosure (Collapsible Body) */
+.nl-service-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-slow), opacity var(--transition-slow);
+}
+
+.nl-service-item.is-active .nl-service-body {
+    max-height: 600px; /* Large enough to avoid clipping but small enough for transition */
+    opacity: 1;
+    padding-top: var(--space-lg);
+}
+
+.nl-service-body-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    max-width: 900px;
+    margin-left: 92px; /* Align with heading after the category number */
+}
+
+.nl-service-desc-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nl-service-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-md);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+}
+
+.nl-service-cta-link:hover {
+    gap: 12px;
+}
+
+/* Included List within Service Item */
+.nl-included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.nl-included-list li {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+
+
+/* 4. Engagement Options */
+/* 4. Engagement Options */
+.nl-engagement-options {
+    margin-top: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    border-top: none; /* Removing container border as we'll use item borders */
+}
+
+.nl-option-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-option-col h4 {
+    font-size: var(--fs-xl);
+    margin-bottom: 0;
+    color: var(--color-text-main);
+}
+
+.nl-option-col p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .nl-services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .nl-included-list {
+        grid-template-columns: 1fr;
+    }
+
+    .nl-engagement-options {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}

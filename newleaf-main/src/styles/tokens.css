@@ -1,0 +1,64 @@
+:root {
+  /* Colors - Editorial Charcoal + Soft White (Agency Classic) */
+  --color-primary: #24C25E; /* Modern Green Accent */
+  --color-primary-light: #3dd373;
+  --color-primary-dark: #1a8e45;
+
+  --color-secondary: #EBEBE8; /* Warmer secondary tone */
+  --color-accent: #24C25E; 
+
+  --color-text-main: #1F2328; /* Charcoal */
+  --color-text-muted: #6B7280;
+  --color-text-light: #FAFAF9;
+
+  --color-bg-main: #f6f7f5; /* Requested off-white */
+  --color-bg-alt: #ffffff; /* Pure white for contrast areas */
+  --color-bg-dark: #1F2328;
+
+  --color-border: rgba(0, 0, 0, 0.04); /* Subtle hairline */
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 2rem;
+  --fs-4xl: 2.5rem;
+  --fs-5xl: 3.5rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --space-3xl: 8rem;
+  --space-4xl: 12rem;
+  --space-5xl: 16rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --container-gutter: var(--space-md);
+
+  /* Transitions & Animations - Performance First */
+  --ease-out-soft: cubic-bezier(.2, .8, .2, 1);
+  
+  --duration-ui: 180ms;
+  --duration-entrance: 450ms;
+
+  --transition-fast: var(--duration-ui) var(--ease-out-soft);
+  --transition-standard: 300ms var(--ease-out-soft);
+  --transition-slow: var(--duration-entrance) var(--ease-out-soft);
+
+  /* Shadows & Border Radius */
+  --shadow-sm: none; /* Removed for decisive spacing */
+  --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.03); /* Extremely soft, ambient only */
+  --border-radius: 4px;
+  --border-radius-lg: 12px;
+}

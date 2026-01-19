@@ -1,0 +1,451 @@
+/* 
+   Home Page Styles - New Leaf
+   Focus: Editorial flow, Anchored Hero, Asymmetric layouts
+*/
+
+/* 1. Hero Section */
+.nl-home-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/hero_home.png');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light); /* Light text on dark overlay */
+    margin-bottom: var(--space-1xl); /* Spacing between hero and body */
+}
+
+.nl-home-hero .nl-eyebrow,
+.nl-home-hero .nl-intro-text,
+.nl-home-hero h1 {
+    color: var(--color-text-light);
+}
+
+.nl-home-hero .nl-nav-link {
+    color: var(--color-text-light);
+}
+
+.nl-home-hero .nl-nav-link:hover {
+    color: var(--color-secondary);
+}
+
+.nl-home-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    max-width: 18ch;
+    letter-spacing: -0.02em;
+}
+
+/* Hero Entrance States (One-time) */
+.hero-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.hero-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-reveal--headline { transition-delay: 100ms; }
+.hero-reveal--subtext { transition-delay: 250ms; }
+.hero-reveal--cta { transition-delay: 400ms; }
+
+/* 2. Trust Line */
+.nl-trust-line {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-main);
+}
+
+.nl-trust-line ul {
+    justify-content: space-between;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+/* 3. High-End Service List (Redesigned Side-Layout) */
+.highlight-section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+}
+
+.nl-service-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Intro | List */
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+/* Sticky Left Column */
+.nl-service-intro {
+    position: sticky;
+    top: 15vh; /* Comfortable eye level */
+    padding-right: var(--space-xl);
+}
+
+.nl-service-intro h2 {
+    font-size: var(--fs-3xl); /* Impactful but fits column */
+    line-height: 1.1;
+    margin-bottom: var(--space-xl);
+    max-width: 15ch;
+}
+
+/* Right Column List */
+.nl-service-list {
+    display: flex;
+    flex-direction: column;
+    /* First item top border creates the alignment line */
+}
+
+/* Redesigned "Capsule" CTA in Context */
+.nl-link-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    transition: all var(--transition-standard);
+    background-color: transparent;
+    width: fit-content;
+}
+
+.nl-capsule-arrow {
+    display: inline-block;
+    transition: transform var(--transition-standard);
+    font-size: 1.2em;
+    line-height: 0; /* Fix vertical alignment */
+}
+
+.nl-link-capsule:hover {
+    background-color: var(--color-text-main);
+    border-color: var(--color-text-main);
+    color: var(--color-bg-alt);
+}
+
+.nl-link-capsule:hover .nl-capsule-arrow {
+    transform: translateX(4px);
+    color: var(--color-primary);
+}
+
+/* Service Items */
+
+
+.nl-service-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 80px;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) 0;
+    border-top: 1px solid var(--color-border);
+    transition: background-color var(--transition-standard);
+    align-items: start;
+}
+
+/* Last borders */
+.nl-service-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nl-service-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.nl-service-num {
+    font-family: var(--font-heading);
+    font-size: var(--fs-lg);
+    color: var(--color-primary);
+    font-weight: 400;
+}
+
+.nl-service-head h3 {
+    font-size: clamp(2rem, 4vw, 3rem); /* Responsive, large typography */
+    margin: 0;
+    font-weight: 400; /* Editorial feel */
+    line-height: 1;
+    color: var(--color-text-main);
+    transition: color var(--transition-standard);
+}
+
+.nl-service-body p {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+    max-width: 45ch;
+}
+
+/* Capability Tags */
+.nl-capability-tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nl-capability-tags li {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    background-color: var(--color-bg-alt);
+    border-radius: 100px;
+    color: var(--color-text-main);
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+/* Hover Interaction */
+.nl-service-action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.nl-arrow-icon {
+    font-size: var(--fs-2xl);
+    color: var(--color-border);
+    transform: rotate(-45deg); /* Angled up-right */
+    transition: all var(--transition-standard);
+}
+
+/* Block Link Overlay */
+.nl-block-link {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Hover States */
+.nl-service-item:hover .nl-service-head h3 {
+    color: var(--color-primary);
+}
+
+.nl-service-item:hover .nl-arrow-icon {
+    color: var(--color-primary);
+    transform: rotate(0deg) translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nl-service-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .nl-service-intro {
+        position: static;
+        padding-right: 0;
+        margin-bottom: 0;
+    }
+
+    .nl-service-intro h2 {
+        max-width: none;
+        font-size: var(--fs-3xl);
+    }
+    
+    .nl-service-item {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        padding: var(--space-xl) 0;
+    }
+
+    .nl-service-action {
+        display: none; /* Hide big arrow on mobile to save space */
+    }
+}
+
+/* 4. Featured Work */
+.nl-case-study {
+    position: relative;
+}
+
+.nl-case-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-color: var(--color-bg-alt);
+    margin-bottom: var(--space-md);
+    transition: var(--transition-slow);
+    overflow: hidden;
+}
+
+.nl-case-study:hover .nl-case-img {
+    background-color: var(--color-secondary);
+}
+
+.nl-case-meta {
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* 5. Process List */
+.nl-process-list {
+    counter-reset: process-counter;
+}
+
+.nl-process-list li {
+    position: relative;
+    padding-left: var(--space-xl);
+    font-size: var(--fs-lg);
+}
+
+.nl-process-list li::before {
+    counter-increment: process-counter;
+    content: counter(process-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    font-family: var(--font-heading);
+    font-size: var(--fs-sm);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Utility: Background Alt */
+.nl-bg-alt {
+    background-color: var(--color-bg-alt);
+}
+
+/* 6. Explore Promo (Feature Section) */
+.nl-explore-promo {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    overflow: hidden;
+    position: relative;
+    padding: 12rem 0; /* Massive vertical spacing */
+}
+
+.nl-explore-promo h2,
+.nl-explore-promo p,
+.nl-explore-promo .nl-eyebrow {
+    color: var(--color-text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.nl-explore-promo h2 {
+    font-size: clamp(3rem, 8vw, 6rem); /* Huge, impactful typography */
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+}
+
+.nl-explore-promo p {
+    font-size: var(--fs-xl);
+    max-width: 40ch;
+    margin-bottom: var(--space-xl);
+    opacity: 0.8;
+}
+
+.nl-explore-layout {
+    align-items: center;
+    position: relative;
+}
+
+.nl-explore-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.nl-decor-circle {
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-glow 8s infinite alternate ease-in-out;
+}
+
+.nl-decor-circle::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+}
+
+.nl-decor-circle::after {
+    content: "";
+    position: absolute;
+    inset: 100px;
+    background: radial-gradient(circle at 50% 50%, var(--color-primary), transparent 70%);
+    opacity: 0.2;
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@media (max-width: 900px) {
+    .nl-explore-promo {
+        padding: var(--space-3xl) 0;
+        text-align: center;
+    }
+    
+    .nl-explore-layout {
+        flex-direction: column;
+    }
+
+    .nl-explore-decor {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: var(--space-2xl);
+    }
+
+    .nl-decor-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .nl-explore-promo p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* 7. Final CTA */
+.nl-cta {
+    text-align: center;
+    border-top: none; /* Removed border as prev section is dark */
+}
+
+.nl-cta .nl-stack {
+    align-items: center;
+}
+
+.nl-cta h2 {
+    font-size: var(--fs-4xl);
+}

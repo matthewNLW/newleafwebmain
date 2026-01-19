@@ -1,0 +1,190 @@
+/* 
+   Contact Page Styles - New Leaf
+   Focus: Sleek, Professional, Editorial
+*/
+
+/* 1. Page Intro Overlay - Refined High-End Look */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../assets/img/hero_contact.png');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    min-height: 400px; /* Taller hero for impact */
+}
+
+.nl-page-intro h1 {
+    font-size: var(--fs-5xl);
+    letter-spacing: -0.02em;
+    color: var(--color-text-light);
+}
+
+.nl-page-intro .nl-intro-text {
+    font-size: var(--fs-xl);
+    max-width: 60ch;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-primary-light);
+}
+
+/* 2. Detailed Contact Form - Skeek Container */
+.nl-contact-form-container {
+    padding: var(--space-2xl);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.05); /* Premium float */
+    border-radius: var(--border-radius-lg);
+    position: relative;
+    z-index: 10;
+    margin-top: -60px; /* Slight overlap with hero for modern depth */
+}
+
+/* Grid System for Form */
+.nl-contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md) var(--space-xl);
+}
+
+/* Full Width Spans */
+.nl-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+/* Specific Field Spans */
+/* Elements that should span full width */
+.nl-form-group:has(textarea),
+.nl-form-group:has(.cf-turnstile),
+.nl-form-group:last-child {
+    grid-column: 1 / -1;
+}
+
+/* Fallback for browsers without :has support - assuming order */
+.nl-form-group:nth-last-child(1), /* Button */
+.nl-form-group:nth-last-child(2), /* Turnstile */
+.nl-form-group:nth-last-child(3) /* Details Textarea */ {
+    grid-column: 1 / -1;
+}
+
+/* Label Styling - Editorial Crispness */
+.nl-form-group label {
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.nl-form-group:focus-within label {
+    color: var(--color-primary-dark);
+}
+
+.nl-form-group .required {
+    color: var(--color-primary);
+    margin-left: 2px;
+}
+
+.nl-form-group .optional {
+    font-weight: 400;
+    text-transform: none;
+    font-style: italic;
+    opacity: 0.6;
+    margin-left: 4px;
+    font-size: 0.9em;
+}
+
+/* Input Styling - Modern Architectural */
+.nl-form-group input,
+.nl-form-group select,
+.nl-form-group textarea {
+    padding: 1rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    background-color: #fafafa; /* Very subtle off-white */
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    width: 100%;
+}
+
+.nl-form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.nl-form-group input:hover,
+.nl-form-group select:hover,
+.nl-form-group textarea:hover {
+    background-color: #fff;
+    border-color: rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.nl-form-group input:focus,
+.nl-form-group select:focus,
+.nl-form-group textarea:focus {
+    outline: none;
+    background-color: #fff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(36, 194, 94, 0.1); /* Brand glow */
+}
+
+/* Button Alignment */
+.nl-form-group button[type="submit"] {
+    width: 100%; /* Full width for impact */
+    padding: 1.25rem;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.15em;
+    margin-top: var(--space-sm);
+}
+
+/* Feedback Message */
+.nl-form-feedback {
+    grid-column: 1 / -1;
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background-color: rgba(36, 194, 94, 0.05);
+    border-left: 2px solid var(--color-primary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity var(--transition-standard), transform var(--transition-standard);
+}
+
+.nl-form-feedback.is-visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nl-contact-form-container {
+        padding: var(--space-xl) var(--space-lg);
+        margin-top: -40px;
+    }
+    
+    .nl-contact-form {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: var(--space-md);
+    }
+
+    .nl-page-intro {
+        min-height: auto;
+        padding-bottom: var(--space-3xl); /* Space for overlap */
+    }
+
+    .nl-page-intro h1 {
+        font-size: var(--fs-3xl);
+    }
+}

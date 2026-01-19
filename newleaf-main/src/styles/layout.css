@@ -1,0 +1,147 @@
+/* 
+   Layout System - New Leaf
+   Focus: Alignment, Rhythm, and Scaffolding
+*/
+
+/* 1. Container system */
+.nl-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+}
+
+/* 2. Vertical spacing system */
+.nl-section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+}
+
+@media (max-width: 768px) {
+    .nl-section {
+        padding-top: var(--space-2xl);
+        padding-bottom: var(--space-2xl);
+    }
+}
+
+/* 3. Global Scaffolding */
+.nl-site-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nl-main {
+    flex: 1 0 auto;
+}
+
+/* Header & Footer Layout Scaffolding */
+/* Header & Footer Layout Scaffolding */
+.nl-footer {
+    width: 100%;
+    padding: var(--space-3xl) 0 var(--space-xl);
+    background-color: var(--color-bg-main);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.nl-footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.nl-footer-col h4 {
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+}
+
+.nl-footer-link {
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    transition: color var(--transition-fast);
+}
+
+.nl-footer-link:hover {
+    color: var(--color-primary);
+}
+
+.nl-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+}
+
+.nl-footer-legal {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+@media (max-width: 900px) {
+    .nl-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 600px) {
+    .nl-footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .nl-footer-bottom {
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: flex-start;
+    }
+}
+
+/* 4. Minimal Grid / Flex Utilities for alignment */
+.nl-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.nl-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.nl-grid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .nl-grid-split {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}
+
+/* 5. Utility: Alternating Backgrounds */
+.nl-bg-alt {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}

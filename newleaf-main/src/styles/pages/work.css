@@ -1,0 +1,177 @@
+/* 
+   Work Page Styles - New Leaf
+   Focus: Flowing Deck, Sticky Interaction, Immersive Scroll
+*/
+
+/* 1. Work Intro & Filter UI */
+.nl-work-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/verdant.png');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-work-intro h1,
+.nl-work-intro .nl-intro-text,
+.nl-work-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+.work-hero-reveal {
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+.work-hero-reveal.is-revealed {
+    opacity: 1;
+}
+
+.nl-work-filter {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.nl-filter-btn {
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.7); 
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.nl-filter-btn:hover,
+.nl-filter-btn.is-active {
+    color: var(--color-text-light);
+    border-bottom-color: var(--color-text-light);
+}
+
+/* 2. The Flowing Deck (Sticky Stack) */
+.nl-deck-container {
+    position: relative;
+    padding-bottom: 10vh; /* Space at end */
+}
+
+.nl-deck-card {
+    position: sticky;
+    top: 120px; /* Default sticky top (below header) */
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-2xl); /* Space between cards in flow */
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.05); /* Suggest depth upwards */
+    height: 600px; /* Fixed height for consistent stacking */
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    transform-origin: center top;
+    transition: transform 0.1s linear; /* Smooth micro-interactions if needed */
+}
+
+/* Staggered Tops for Stacking Effect based on index provided in HTML or simple nth-child */
+.nl-deck-card:nth-child(1) { top: 100px; }
+.nl-deck-card:nth-child(2) { top: 120px; }
+.nl-deck-card:nth-child(3) { top: 140px; }
+.nl-deck-card:nth-child(4) { top: 160px; }
+.nl-deck-card:nth-child(5) { top: 180px; }
+.nl-deck-card:nth-child(6) { top: 200px; }
+
+/* In case of more items, they just stack at 200px or loop styles via JS, but CSS covers most cases */
+
+.nl-deck-media {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid var(--color-border);
+}
+
+.nl-deck-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.nl-deck-card:hover .nl-deck-img {
+    transform: scale(1.03);
+}
+
+.nl-deck-content {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nl-deck-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nl-deck-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-4xl);
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.nl-deck-desc {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+    max-width: 45ch;
+}
+
+.nl-view-case {
+    align-self: flex-start;
+}
+
+/* Responsive: Disable sticky on mobile for better usability */
+@media (max-width: 992px) {
+    .nl-deck-card {
+        height: auto;
+        min-height: 500px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 1fr;
+    }
+    
+    .nl-deck-media {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-deck-card {
+        position: relative; /* Unlock sticky */
+        top: auto !important; /* Reset staggered tops */
+        margin-bottom: var(--space-xl);
+        grid-template-rows: 250px auto;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .nl-deck-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .nl-deck-content {
+        padding: var(--space-lg);
+    }
+}

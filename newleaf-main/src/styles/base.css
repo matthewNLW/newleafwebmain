@@ -21,6 +21,21 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Mobile Typography Adjustments */
+@media (max-width: 480px) {
+    p {
+        font-size: 0.9375rem; /* 15px */
+    }
+
+    h1 {
+        font-size: var(--fs-3xl);
+    }
+    
+    h2 {
+        font-size: var(--fs-2xl);
+    }
+}
+
 /* 3. Link defaults */
 a {
     color: inherit;

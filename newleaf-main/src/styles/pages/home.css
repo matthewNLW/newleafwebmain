@@ -449,3 +449,50 @@
 .nl-cta h2 {
     font-size: var(--fs-4xl);
 }
+
+@media (max-width: 768px) {
+    .nl-home-hero {
+        min-height: 70vh;
+    }
+
+    .nl-home-hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        max-width: none;
+    }
+
+    .nl-trust-line ul {
+        justify-content: flex-start;
+        gap: var(--space-xl);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--space-xs);
+    }
+
+    .nl-cta h2 {
+        font-size: var(--fs-2xl);
+    }
+
+    .nl-hero-actions {
+        flex-direction: column;
+        gap: var(--space-sm);
+        width: 100%;
+    }
+
+    .nl-hero-actions .nl-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nl-home-hero {
+        min-height: 60vh;
+        padding-top: 100px;
+    }
+
+    .nl-capability-tags li {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+}
+

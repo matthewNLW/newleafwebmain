@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | New Leaf</title>
+    <meta name="description" content="Thank you for contacting New Leaf. We've received your inquiry and will be in touch shortly.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <style>
+        /* Inline styles for this simple page */
+        .nl-thanks-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-3xl) 0;
+        }
+        
+        .nl-thanks-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nl-thanks-icon {
+            font-size: 4rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="nl-header" id="header">
+        <div class="nl-container">
+            <a href="index.html" class="nl-logo" aria-label="New Leaf Home">New Leaf Web Development</a>
+            
+            <button class="nl-mobile-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nl-nav" id="primary-nav">
+                <a href="services.html" class="nl-nav-link">Services</a>
+                <a href="work.html" class="nl-nav-link">Work</a>
+                <a href="process.html" class="nl-nav-link">Process</a>
+                <a href="explore.html" class="nl-nav-link">Explore</a>
+                <a href="about.html" class="nl-nav-link">About</a>
+                <a href="contact.html" class="nl-btn nl-btn--primary">Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="nl-main" id="main">
+        <section class="nl-section nl-thanks-section">
+            <div class="nl-container">
+                <div class="nl-thanks-content reveal">
+                    <span class="nl-eyebrow">Submission Received</span>
+                    <h1>We'll be in touch.</h1>
+                    <p class="nl-intro-text" style="font-size: var(--fs-lg); opacity: 0.8; margin-bottom: var(--space-xl);">
+                        Thanks for starting the conversation. We've received your project details and will review them shortly. Expect a response within 48 hours.
+                    </p>
+                    <div class="nl-stack-horizontal" style="justify-content: center; gap: var(--space-md);">
+                        <a href="index.html" class="nl-btn nl-btn--primary">Back to Home</a>
+                        <a href="work.html" class="nl-btn nl-btn--secondary">View Our Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="nl-footer">
+        <div class="nl-container">
+            <div class="nl-footer-grid">
+                <!-- Column 1: Brand -->
+                <div class="nl-footer-col">
+                    <a href="index.html" class="nl-logo">New Leaf Web Development</a>
+                    <p style="color: var(--color-text-muted); font-size: var(--fs-sm); max-width: 30ch;">
+                        Strategic design and development built for small businesses looking to grow.
+                    </p>
+                </div>
+
+                <!-- Column 2: Navigate -->
+                <div class="nl-footer-col">
+                    <h4>Navigate</h4>
+                    <a href="services.html" class="nl-footer-link">Services</a>
+                    <a href="work.html" class="nl-footer-link">Work</a>
+                    <a href="process.html" class="nl-footer-link">Process</a>
+                    <a href="explore.html" class="nl-footer-link">Explore</a>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div class="nl-footer-col">
+                    <h4>Company</h4>
+                    <a href="about.html" class="nl-footer-link">About</a>
+                    <a href="contact.html" class="nl-footer-link">Contact</a>
+                </div>
+
+                <!-- Column 4: Contact -->
+                <div class="nl-footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:hello@newleaf.agency" class="nl-footer-link">matthew@newleafweb.com</a>
+                    <a href="tel:+18035550123" class="nl-footer-link">+1 (803) 445-8332</a>
+
+                </div>
+            </div>
+
+            <div class="nl-footer-bottom">
+                <div class="nl-footer-legal">
+                    <a href="privacy.html" class="nl-footer-link" style="color: var(--color-text-muted); font-size: var(--fs-xs);">Privacy Policy</a>
+                    <a href="terms.html" class="nl-footer-link" style="color: var(--color-text-muted); font-size: var(--fs-xs);">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 New Leaf Web. Made in Pawleys Island SC.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js" type="module"></script>
+</body>
+</html>

@@ -1,7 +1,68 @@
+[build]
+  publish = "src"
+
 [[edge_functions]]
   path = "/*"
   function = "security"
 
+# 1. Page Rewrites (SPA-like or pretty URLs)
+[[redirects]]
+  from = "/"
+  to = "/pages/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/pages/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/services"
+  to = "/pages/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/work"
+  to = "/pages/work.html"
+  status = 200
+
+[[redirects]]
+  from = "/process"
+  to = "/pages/process.html"
+  status = 200
+
+[[redirects]]
+  from = "/explore"
+  to = "/pages/explore.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/pages/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/thanks"
+  to = "/pages/thanks.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/pages/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/pages/terms.html"
+  status = 200
+
+# Fallback for direct HTML access if needed, or 404
+[[redirects]]
+  from = "/*"
+  to = "/pages/index.html"
+  status = 404
+
+# 2. Security & Caching Headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -9,3 +70,26 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache immutable assets (images, styles, scripts) for 1 year
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/styles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/scripts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Don't cache HTML files to ensure updates go live immediately
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

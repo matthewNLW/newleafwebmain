@@ -39,6 +39,9 @@ export const initProcessStepper = () => {
                 isScrolling = true;
                 updateActiveNav(targetId);
                 
+                // Immediately make the target visible (bypass observer)
+                targetElement.classList.add('is-visible');
+                
                 window.scrollTo({
                     top: targetElement.offsetTop - 120, // offset for sticky header
                     behavior: 'smooth'

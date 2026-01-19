@@ -24,6 +24,25 @@
         padding-top: var(--space-2xl);
         padding-bottom: var(--space-2xl);
     }
+    
+    /* Ensure hero clears the fixed header (80px) */
+    .nl-main > .nl-section:first-child,
+    .nl-page-intro,
+    .nl-home-hero {
+        padding-top: calc(80px + var(--space-xl));
+    }
+}
+
+@media (max-width: 480px) {
+    .nl-container {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+    }
+
+    .nl-section {
+        padding-top: var(--space-xl);
+        padding-bottom: var(--space-xl);
+    }
 }
 
 /* 3. Global Scaffolding */

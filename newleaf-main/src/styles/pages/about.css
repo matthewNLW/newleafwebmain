@@ -141,8 +141,44 @@
         grid-template-columns: 1fr;
         gap: var(--space-lg);
     }
+
+    .nl-regional-visual {
+        min-height: 300px;
+    }
 }
 
 @media (max-width: 768px) {
-    /* No specific overrides needed for story layout as it is now centered and fluid */
+    .nl-story-layout {
+        text-align: center;
+        align-items: center;
+    }
+
+    .nl-story-header h2 {
+        font-size: var(--fs-3xl);
+    }
+
+    .nl-story-content p {
+        font-size: var(--fs-base);
+    }
+
+    .nl-value-label {
+        font-size: var(--fs-lg);
+    }
+
+    .nl-value-item p {
+        max-width: none;
+    }
+
+    .nl-value-item::before {
+        display: none; /* Hide decorative dot on mobile */
+    }
+
+    .nl-regional-visual {
+        min-height: 250px;
+        margin-bottom: var(--space-lg);
+    }
+
+    .nl-grid-split {
+        gap: var(--space-lg);
+    }
 }

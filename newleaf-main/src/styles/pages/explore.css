@@ -3,6 +3,10 @@
    Focus: Editorial list, spacing-driven, minimalist hierarchy
 */
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* 1. Page Intro */
 .nl-explore-intro {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&q=80&w=2000');
@@ -16,6 +20,22 @@
 .nl-explore-intro h1,
 .nl-explore-intro .nl-intro-text {
     color: var(--color-text-light);
+}
+
+/* Custom Explore CTA */
+.nl-btn--explore {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.nl-btn--explore:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* 2. Theme List (Gallery Grid) */
@@ -205,32 +225,210 @@
 
 /* Re-include sig specific logic to be safe since I'm overwriting the block */
 /* Fantasy Sig (Replaces Professional) */
-.fantasy-sig { background-color: #1a0f08; border: 1px solid rgba(212, 175, 55, 0.25); }
-.fantasy-sig .sig-text { font-family: 'Playfair Display', serif; color: #f5e6d3; } /* Parchment White */
-.fantasy-sig .sig-accent { background: linear-gradient(135deg, transparent 60%, #d4af37 100%); opacity: 0.2; }
-
-/* Nature Sig */
-.nature-sig { background-color: #1b2a22; border: 1px solid #4f6f5e; }
-.nature-sig .sig-text { font-family: 'Outfit', sans-serif; color: #e6f2e8; }
-.nature-sig .sig-accent { background: radial-gradient(circle at top right, #6bd18b 0%, transparent 70%); opacity: 0.1; }
+/* Fantasy Sig */
+.fantasy-sig { 
+    background: linear-gradient(135deg, #1a0f08 0%, #3e2723 50%, #d4af37 100%); 
+    border: 1px solid rgba(212, 175, 55, 0.25); 
+}
+.fantasy-sig .sig-text { 
+    font-family: 'Playfair Display', serif; 
+    color: #f5e6d3; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+} 
+.fantasy-sig .sig-accent { display: none; }
 
 /* Retro Sig */
-.retro-sig { background-color: #111111; border: 1px solid rgba(183, 255, 207, .2); }
-.retro-sig .sig-text { font-family: 'IBM Plex Mono', monospace; color: #b7ffcf; opacity: 1; }
-.retro-sig .sig-accent { background: repeating-linear-gradient(0deg, rgba(183, 255, 207, 0.05) 0px, transparent 1px, transparent 2px); }
+.retro-sig { 
+    background: linear-gradient(135deg, #111111 0%, #2a4435 50%, #b7ffcf 100%);
+    border: 1px solid rgba(183, 255, 207, .2); 
+}
+.retro-sig .sig-text { 
+    font-family: 'IBM Plex Mono', monospace; 
+    color: #ffffff; 
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+.retro-sig .sig-accent { display: none; }
 
 /* Future Sig */
-.future-sig { background-color: #050612; border: 1px solid rgba(79, 209, 255, 0.22); }
-.future-sig .sig-text { font-family: 'JetBrains Mono', monospace; color: #e9f0ff; }
-.future-sig .sig-accent { background: linear-gradient(90deg, transparent 49.5%, rgba(79, 209, 255, 0.2) 50%, transparent 50.5%); background-size: 20px 20px; }
+.future-sig { 
+    background: linear-gradient(135deg, #050612 0%, #1a3a5a 50%, #4fd1ff 100%);
+    border: 1px solid rgba(79, 209, 255, 0.22); 
+}
+.future-sig .sig-text { 
+    font-family: 'JetBrains Mono', monospace; 
+    color: #e9f0ff; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.future-sig .sig-accent { display: none; }
 
+/* Nature Sig */
+.nature-sig { 
+    background: linear-gradient(135deg, #1b2a22 0%, #4f6f5e 50%, #6bd18b 100%);
+    border: 1px solid #4f6f5e; 
+}
+.nature-sig .sig-text { 
+    font-family: 'Outfit', sans-serif; 
+    color: #ffffff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.nature-sig .sig-accent { display: none; }
+
+/* 7. Tags */
 /* 7. Tags */
 .nl-tag {
     font-size: 10px;
     padding: 4px 8px;
+    border-radius: 100px;
+    border: 1px solid currentColor;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
 }
 
-/* Responsive Scaling */
+/* Theme Specific Tag Styles */
+.theme-fantasy .nl-tag {
+    color: #ae8b2d; /* Gold/Bronze */
+    background-color: rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.theme-retro .nl-tag {
+    color: #2a4435; /* Dark Green Text for contrast if light bg, or lighter if dark bg. Keep readable. */
+    color: #2a8b55; /* Adjusted for readability on white/off-white */
+    background-color: rgba(183, 255, 207, 0.25);
+    border-color: rgba(42, 139, 85, 0.3);
+}
+
+.theme-future .nl-tag {
+    color: #007bb6; /* Cyan/Blue darkened */
+    background-color: rgba(79, 209, 255, 0.1);
+    border-color: rgba(79, 209, 255, 0.4);
+}
+
+.theme-nature .nl-tag {
+    color: #3a5244; /* Deep Forest */
+    background-color: rgba(107, 209, 139, 0.15);
+    border-color: rgba(79, 111, 94, 0.3);
+}
+
+/* 8. Action/Previews Section (Lab Style) */
+.nl-action-section {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    overflow: hidden;
+    position: relative;
+    padding: 12rem 0; /* Massive vertical spacing */
+    border-top: none;
+}
+
+.nl-action-section h2,
+.nl-action-section p,
+.nl-action-section .nl-eyebrow {
+    color: var(--color-text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.nl-action-section h2 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+    font-family: var(--font-heading);
+}
+
+.nl-action-section p {
+    font-size: var(--fs-xl);
+    max-width: 40ch;
+    margin-bottom: var(--space-xl);
+    opacity: 0.8;
+}
+
+.nl-action-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    gap: var(--space-2xl);
+}
+
+.nl-action-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nl-explore-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Centered in its grid cell */
+    width: 100%;
+    height: 100%;
+}
+
+.nl-decor-circle {
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-glow 8s infinite alternate ease-in-out;
+}
+
+.nl-decor-circle::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+}
+
+.nl-decor-circle::after {
+    content: "";
+    position: absolute;
+    inset: 80px;
+    background: radial-gradient(circle at 50% 50%, var(--color-primary), transparent 70%);
+    opacity: 0.2;
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Responsive Scaling for Lab Section */
+@media (max-width: 900px) {
+    .nl-action-section {
+        padding: var(--space-3xl) 0;
+        text-align: center;
+    }
+    
+    .nl-action-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .nl-action-details {
+        align-items: center;
+    }
+
+    .nl-explore-decor {
+        margin-top: var(--space-2xl);
+    }
+
+    .nl-decor-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .nl-action-section p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 @media (max-width: 900px) {
     .nl-theme-list {
         grid-template-columns: 1fr;
@@ -242,3 +440,52 @@
     }
 }
 
+@media (max-width: 768px) {
+    .nl-theme-item {
+        padding: var(--space-lg);
+    }
+
+    .nl-theme-content h2 {
+        font-size: var(--fs-xl);
+    }
+
+    .nl-theme-description {
+        font-size: var(--fs-sm);
+        margin-bottom: var(--space-md);
+    }
+
+    .nl-visual-signature {
+        aspect-ratio: 16/9;
+    }
+
+    .sig-text {
+        font-size: 32px;
+    }
+
+    .nl-spec-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .nl-spec-item span {
+        text-align: left;
+    }
+
+    .nl-tag {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+
+    .nl-theme-tags {
+        gap: 4px;
+    }
+
+    .nl-theme-extra {
+        font-size: 11px;
+    }
+
+    .nl-specs-grid {
+        gap: var(--space-xs);
+    }
+}

@@ -5,7 +5,7 @@
 
 /* 1. Page Intro */
 .nl-page-intro {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2000');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/process-hero.png');
     background-size: cover;
     background-position: center;
     border-bottom: 1px solid var(--color-border);
@@ -292,7 +292,7 @@
 
     .nl-process-sidebar {
         position: static;
-        margin-bottom: var(--space-3xl);
+        margin-bottom: var(--space-2xl);
         padding-right: 0;
     }
 
@@ -301,7 +301,7 @@
         overflow-x: auto;
         padding-bottom: var(--space-sm);
         -webkit-overflow-scrolling: touch;
-        gap: var(--space-xl);
+        gap: var(--space-lg);
     }
 
     .nl-process-nav-link {
@@ -309,12 +309,35 @@
         padding: 0;
     }
 
+    .nl-nav-num {
+        font-size: var(--fs-lg);
+    }
+
+    .nl-nav-label {
+        font-size: 10px;
+    }
+
     .nl-process-nav-link::before {
         display: none;
     }
 
     .nl-process-content {
-        gap: 80px;
+        gap: var(--space-3xl);
+    }
+
+    .nl-step-headline {
+        font-size: var(--fs-3xl);
+        max-width: none;
+    }
+
+    .nl-step-description {
+        font-size: var(--fs-base);
+        margin-bottom: var(--space-xl);
+    }
+
+    .nl-step-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.15em;
     }
 
     .nl-partnership-grid {
@@ -326,4 +349,52 @@
         grid-template-columns: 1fr;
         gap: var(--space-xl);
     }
+
+    .nl-collab-item h4 {
+        font-size: var(--fs-base);
+    }
+
+    .nl-timeline-card {
+        padding: var(--space-md);
+    }
+
+    .nl-timeline-card h4 {
+        font-size: var(--fs-base);
+    }
 }
+
+@media (max-width: 600px) {
+    .nl-process-nav-list {
+        gap: var(--space-md);
+    }
+
+    .nl-step-block {
+        scroll-margin-top: 100px;
+    }
+
+    .nl-role-col {
+        padding: var(--space-lg);
+    }
+
+    .nl-role-title {
+        font-size: 10px;
+    }
+
+    .nl-minimal-list li {
+        font-size: var(--fs-sm);
+        padding: 4px 0;
+    }
+
+    .nl-process-outcome {
+        padding: var(--space-md);
+    }
+
+    .nl-outcome-label {
+        font-size: 10px;
+    }
+
+    .nl-outcome-text {
+        font-size: var(--fs-sm);
+    }
+}
+

@@ -1,4 +1,18 @@
-User-agent: *
+User-agent: Googlebot
 Allow: /
 
-Sitemap: https://newleaf.agency/sitemap.xml
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: *
+Disallow: /admin/
+Disallow: /tmp/

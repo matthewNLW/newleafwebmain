@@ -131,9 +131,17 @@
     color: var(--color-text-light);
 }
 
+.nl-header.header-light .nl-mobile-toggle span {
+    background-color: var(--color-text-light);
+}
+
 .nl-header.header-light.is-scrolled .nl-nav-link,
 .nl-header.header-light.is-scrolled .nl-logo {
     color: var(--color-text-main);
+}
+
+.nl-header.header-light.is-scrolled .nl-mobile-toggle span {
+    background-color: var(--color-text-main);
 }
 
 
@@ -144,6 +152,9 @@
     padding: var(--space-xs);
     flex-direction: column;
     gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .nl-mobile-toggle span {
@@ -167,12 +178,30 @@
         height: 0;
         overflow: hidden;
         flex-direction: column;
-        background-color: var(--color-bg-main);
+        background-color: var(--color-bg-dark);
         padding: 0;
         transition: height var(--transition-standard);
         z-index: 1000;
         border-bottom: 1px solid var(--color-border);
     }
+
+    .nl-nav .nl-nav-link {
+        color: var(--color-text-light);
+        font-size: var(--fs-lg);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+        padding: var(--space-sm) 0;
+    }
+
+    .nl-nav .nl-nav-link:hover {
+        color: var(--color-primary) !important;
+    }
+    
+    .nl-nav .nl-btn {
+        margin-top: var(--space-md);
+        width: 100%;
+    }
+    
 
     /* Logic: Nav open state using data attribute [data-nav-active="true"] */
     .nl-header[data-nav-active="true"] .nl-nav {
@@ -186,6 +215,10 @@
         opacity: 0;
         transform: translateY(-8px);
         transition: opacity var(--transition-standard), transform var(--transition-standard), height var(--transition-standard);
+    }
+
+    .nl-header[data-nav-active="true"] .nl-mobile-toggle span {
+        background-color: var(--color-text-light);
     }
 
     .nl-header[data-nav-active="true"] .nl-mobile-toggle span:nth-child(1) {

@@ -5,6 +5,10 @@
   path = "/*"
   function = "security"
 
+[[edge_functions]]
+  path = "/lead"
+  function = "lead"
+
 # 1. Page Rewrites (SPA-like or pretty URLs)
 [[redirects]]
   from = "/"

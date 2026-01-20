@@ -302,6 +302,7 @@
 /* 5. Process List */
 .nl-process-list {
     counter-reset: process-counter;
+    list-style: none; /* Ensure no default bullets */
 }
 
 .nl-process-list li {
@@ -320,6 +321,13 @@
     font-size: var(--fs-sm);
     color: var(--color-primary);
     font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    /* Ensure numbers aren't flush with edge on smaller screens */
+    .nl-process-list {
+        padding-left: var(--space-xs);
+    }
 }
 
 /* Utility: Background Alt */

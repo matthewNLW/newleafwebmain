@@ -183,7 +183,6 @@ nav .container {
 }
 
 .product-card {
-  group: hover;
   position: relative;
 }
 

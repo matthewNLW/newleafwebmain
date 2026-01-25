@@ -168,7 +168,7 @@
 @media (max-width: 768px) {
     .nl-mobile-toggle {
         display: flex;
-        z-index: 1002; /* Ensure above nav overlay */
+        z-index: 2100; /* Ensure SUPER high above nav overlay and everything else */
     }
 
     .nl-nav {
@@ -179,6 +179,7 @@
         height: 100vh; /* Fallback */
         height: 100dvh;
         overflow-y: auto;
+        overscroll-behavior: contain; /* Prevent body scroll chaining */
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -192,7 +193,7 @@
         transform: translateY(-10px);
         
         transition: opacity var(--transition-standard), transform var(--transition-standard), visibility var(--transition-standard);
-        z-index: 1001; /* Above header background, below toggle */
+        z-index: 2000; /* Above header background */
     }
 
     /* Override any specific text colors from header states */

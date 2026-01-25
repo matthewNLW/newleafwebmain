@@ -77,20 +77,24 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 # Cache immutable assets (images, styles, scripts) for 1 year
+# Cache immutable assets (images, styles, scripts)
+# CHANGED to max-age=0 to fix update issues. 
+# In a production build with hashed filenames (e.g. style.123.css), we would use 1 year.
+# But since we have static filenames, we must force revalidation.
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/styles/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/scripts/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # Don't cache HTML files to ensure updates go live immediately
 [[headers]]

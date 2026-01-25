@@ -126,22 +126,25 @@
 }
 
 /* Handle Dark Hero Collision */
-.nl-header.header-light .nl-nav-link,
-.nl-header.header-light .nl-logo {
-    color: var(--color-text-light);
-}
+/* Handle Dark Hero Collision - DESKTOP ONLY */
+@media (min-width: 769px) {
+    .nl-header.header-light .nl-nav-link,
+    .nl-header.header-light .nl-logo {
+        color: var(--color-text-light);
+    }
 
-.nl-header.header-light .nl-mobile-toggle span {
-    background-color: var(--color-text-light);
-}
+    .nl-header.header-light .nl-mobile-toggle span {
+        background-color: var(--color-text-light);
+    }
 
-.nl-header.header-light.is-scrolled .nl-nav-link,
-.nl-header.header-light.is-scrolled .nl-logo {
-    color: var(--color-text-main);
-}
+    .nl-header.header-light.is-scrolled .nl-nav-link,
+    .nl-header.header-light.is-scrolled .nl-logo {
+        color: var(--color-text-main);
+    }
 
-.nl-header.header-light.is-scrolled .nl-mobile-toggle span {
-    background-color: var(--color-text-main);
+    .nl-header.header-light.is-scrolled .nl-mobile-toggle span {
+        background-color: var(--color-text-main);
+    }
 }
 
 

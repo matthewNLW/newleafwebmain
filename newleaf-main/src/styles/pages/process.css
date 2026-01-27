@@ -5,7 +5,7 @@
 
 /* 1. Page Intro */
 .nl-page-intro {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/process-hero.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/process-hero.webp');
     background-size: cover;
     background-position: center;
     border-bottom: 1px solid var(--color-border);

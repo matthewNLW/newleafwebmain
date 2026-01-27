@@ -1,0 +1,1303 @@
+/* 
+   BUNDLE: Tokens, Base, Layout, Components, Home
+   Combined for Performance Optimization
+*/
+
+/* --- TOKENS --- */
+:root {
+  /* Colors - Editorial Charcoal + Soft White (Agency Classic) */
+  --color-primary: #24C25E; /* Modern Green Accent */
+  --color-primary-light: #3dd373;
+  --color-primary-dark: #1a8e45;
+
+  --color-secondary: #EBEBE8; /* Warmer secondary tone */
+  --color-accent: #24C25E; 
+
+  --color-text-main: #1F2328; /* Charcoal */
+  --color-text-muted: #6B7280;
+  --color-text-light: #FAFAF9;
+
+  --color-bg-main: #f6f7f5; /* Requested off-white */
+  --color-bg-alt: #ffffff; /* Pure white for contrast areas */
+  --color-bg-dark: #1F2328;
+
+  --color-border: rgba(0, 0, 0, 0.04); /* Subtle hairline */
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 2rem;
+  --fs-4xl: 2.5rem;
+  --fs-5xl: 3.5rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --space-3xl: 8rem;
+  --space-4xl: 12rem;
+  --space-5xl: 16rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --container-gutter: var(--space-md);
+
+  /* Transitions & Animations - Performance First */
+  --ease-out-soft: cubic-bezier(.2, .8, .2, 1);
+  
+  --duration-ui: 180ms;
+  --duration-entrance: 450ms;
+
+  --transition-fast: var(--duration-ui) var(--ease-out-soft);
+  --transition-standard: 300ms var(--ease-out-soft);
+  --transition-slow: var(--duration-entrance) var(--ease-out-soft);
+
+  /* Shadows & Border Radius */
+  --shadow-sm: none; /* Removed for decisive spacing */
+  --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.03); /* Extremely soft, ambient only */
+  --border-radius: 4px;
+  --border-radius-lg: 12px;
+}
+
+/* --- BASE --- */
+/* 
+   Base Styles - New Leaf
+   Focus: Typography, Reset, and Accessibility
+*/
+
+/* 1. Box-sizing reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Body typography defaults & 7. Body background/color */
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile Typography Adjustments */
+@media (max-width: 480px) {
+    p {
+        font-size: 0.9375rem; /* 15px */
+    }
+
+    h1 {
+        font-size: var(--fs-3xl);
+    }
+    
+    h2 {
+        font-size: var(--fs-2xl);
+    }
+}
+
+/* 3. Link defaults */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+/* 4. Focus-visible styles */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+/* 5. Sensible default spacing for headings/paragraphs */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: var(--space-md);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin-bottom: var(--space-md);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* 6. Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal--stagger > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal--stagger.is-revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay helpers for staggering */
+.delay-1 { transition-delay: 100ms; }
+.delay-2 { transition-delay: 200ms; }
+.delay-3 { transition-delay: 300ms; }
+
+/* 7. Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+    
+    .reveal, .reveal--stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* --- LAYOUT --- */
+/* 
+   Layout System - New Leaf
+   Focus: Alignment, Rhythm, and Scaffolding
+*/
+
+/* 1. Container system */
+.nl-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+}
+
+/* 2. Vertical spacing system */
+.nl-section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+}
+
+@media (max-width: 768px) {
+    .nl-section {
+        padding-top: var(--space-2xl);
+        padding-bottom: var(--space-2xl);
+    }
+    
+    /* Ensure hero clears the fixed header (80px) */
+    .nl-main > .nl-section:first-child,
+    .nl-page-intro,
+    .nl-home-hero {
+        padding-top: calc(80px + var(--space-xl));
+    }
+}
+
+@media (max-width: 480px) {
+    .nl-container {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+    }
+
+    .nl-section {
+        padding-top: var(--space-xl);
+        padding-bottom: var(--space-xl);
+    }
+}
+
+/* 3. Global Scaffolding */
+.nl-site-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nl-main {
+    flex: 1 0 auto;
+}
+
+/* Header & Footer Layout Scaffolding */
+/* Header & Footer Layout Scaffolding */
+.nl-footer {
+    width: 100%;
+    padding: var(--space-3xl) 0 var(--space-xl);
+    background-color: var(--color-bg-main);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.nl-footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.nl-footer-col h4 {
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+}
+
+.nl-footer-link {
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    transition: color var(--transition-fast);
+}
+
+.nl-footer-link:hover {
+    color: var(--color-primary);
+}
+
+.nl-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+}
+
+.nl-footer-legal {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+@media (max-width: 900px) {
+    .nl-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 600px) {
+    .nl-footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .nl-footer-bottom {
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: flex-start;
+    }
+}
+
+/* 4. Minimal Grid / Flex Utilities for alignment */
+.nl-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.nl-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.nl-grid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .nl-grid-split {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}
+
+/* 5. Utility: Alternating Backgrounds */
+.nl-bg-alt {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* --- COMPONENTS --- */
+/* 
+   Component System - New Leaf
+   Focus: Reusable patterns, Editorial flow, Premium minimalism
+*/
+
+/* 1. Buttons */
+.nl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--border-radius);
+    transition: var(--transition-standard);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.nl-btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.nl-btn--primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.nl-btn--secondary {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.nl-btn--secondary:hover {
+    background-color: var(--color-secondary);
+}
+
+/* 2. Header & Navigation */
+.nl-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    transition: all var(--transition-standard);
+    background-color: transparent;
+}
+
+.nl-logo {
+    font-family: var(--font-heading);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-text-main);
+    text-decoration: none;
+}
+
+.nl-header .nl-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Scrolled State */
+.nl-header.is-scrolled {
+    height: 70px;
+    background-color: rgba(244, 244, 241, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Navigation Links */
+.nl-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.nl-nav-link {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-main);
+    transition: color var(--transition-fast);
+}
+
+.nl-nav-link:hover,
+.nl-nav-link.is-active {
+    color: var(--color-primary) !important;
+    font-weight: 700;
+}
+
+.nl-btn.is-active {
+    background-color: var(--color-primary-dark);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nl-nav-link {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nl-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width var(--transition-standard);
+}
+
+.nl-nav-link:hover::after,
+.nl-nav-link.is-active::after {
+    width: 100%;
+}
+
+/* Handle Dark Hero Collision */
+/* Handle Dark Hero Collision - DESKTOP ONLY */
+@media (min-width: 769px) {
+    .nl-header.header-light .nl-nav-link,
+    .nl-header.header-light .nl-logo {
+        color: var(--color-text-light);
+    }
+
+    .nl-header.header-light .nl-mobile-toggle span {
+        background-color: var(--color-text-light);
+    }
+
+    .nl-header.header-light.is-scrolled .nl-nav-link,
+    .nl-header.header-light.is-scrolled .nl-logo {
+        color: var(--color-text-main);
+    }
+
+    .nl-header.header-light.is-scrolled .nl-mobile-toggle span {
+        background-color: var(--color-text-main);
+    }
+}
+
+
+
+/* Mobile Menu Button */
+.nl-mobile-toggle {
+    display: none;
+    padding: var(--space-xs);
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nl-mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-main);
+    transition: var(--transition-fast);
+}
+
+@media (max-width: 768px) {
+    .nl-mobile-toggle {
+        display: flex;
+        z-index: 2100; /* Ensure SUPER high above nav overlay and everything else */
+    }
+
+    .nl-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Fallback */
+        height: 100dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain; /* Prevent body scroll chaining */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-bg-dark);
+        padding: 100px var(--container-gutter) var(--space-xl);
+        
+        /* Hidden State */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-10px);
+        
+        transition: opacity var(--transition-standard), transform var(--transition-standard), visibility var(--transition-standard);
+        z-index: 2000; /* Above header background */
+    }
+
+    /* Override any specific text colors from header states */
+    .nl-nav .nl-nav-link {
+        color: var(--color-text-light) !important;
+        font-size: var(--fs-2xl); /* Larger, more premium link size */
+        font-family: var(--font-heading); /* Switch to heading font for drama */
+        border-bottom: none; /* Remove distinct border */
+        width: auto;
+        padding: var(--space-xs) 0;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+    }
+
+    .nl-nav .nl-nav-link:hover {
+        color: var(--color-primary) !important;
+        transform: scale(1.05) translateY(10px); /* Subtle scale */
+    }
+    
+    .nl-nav .nl-btn {
+        margin-top: var(--space-xl);
+        width: auto;
+        min-width: 200px;
+        font-size: var(--fs-base);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+
+    /* Logic: Nav open state using data attribute [data-nav-active="true"] */
+    .nl-header[data-nav-active="true"] .nl-nav {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+    
+    /* Staggered entrance animation for links */
+    .nl-header[data-nav-active="true"] .nl-nav .nl-nav-link,
+    .nl-header[data-nav-active="true"] .nl-nav .nl-btn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .nl-header[data-nav-active="true"] .nl-nav .nl-nav-link:nth-child(1) { transition-delay: 0.1s; }
+    .nl-header[data-nav-active="true"] .nl-nav .nl-nav-link:nth-child(2) { transition-delay: 0.15s; }
+    .nl-header[data-nav-active="true"] .nl-nav .nl-nav-link:nth-child(3) { transition-delay: 0.2s; }
+    .nl-header[data-nav-active="true"] .nl-nav .nl-nav-link:nth-child(4) { transition-delay: 0.25s; }
+    .nl-header[data-nav-active="true"] .nl-nav .nl-nav-link:nth-child(5) { transition-delay: 0.3s; }
+    .nl-header[data-nav-active="true"] .nl-nav .nl-btn { transition-delay: 0.35s; } 
+
+    .nl-header[data-nav-active="true"] .nl-mobile-toggle span {
+        background-color: var(--color-text-light) !important;
+    }
+
+    .nl-header[data-nav-active="true"] .nl-mobile-toggle span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nl-header[data-nav-active="true"] .nl-mobile-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+    .nl-header[data-nav-active="true"] .nl-mobile-toggle span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* 3. Section Headings */
+.nl-section-header {
+    max-width: 700px;
+    margin-bottom: var(--space-2xl);
+}
+
+.nl-eyebrow {
+    display: block;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.nl-section-header h2 {
+    font-size: var(--fs-4xl);
+    margin-bottom: var(--space-sm);
+}
+
+.nl-section-header .nl-intro-text {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+}
+
+/* 4. Arrow Link */
+.nl-link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    align-self: flex-start; /* Ensure it doesn't stretch in flex columns */
+}
+
+.nl-link-arrow .arrow {
+    display: inline-block;
+    transition: transform var(--transition-standard);
+    font-family: inherit;
+    font-weight: 400;
+}
+
+.nl-link-arrow:hover {
+    color: var(--color-primary);
+}
+
+.nl-link-arrow:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* 5. Footer CTA (High Impact) */
+.nl-footer-cta {
+    background-color: var(--color-secondary); /* Distinct warm grey (#EBEBE8) */
+    color: var(--color-text-main);
+    padding: var(--space-3xl) 0;
+    position: relative;
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-footer-cta .nl-container {
+    position: relative;
+    z-index: 2;
+}
+
+.nl-footer-cta-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+
+.nl-footer-cta h2 {
+    font-size: var(--fs-4xl); 
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-main); 
+    line-height: 1.1;
+}
+
+.nl-footer-cta p {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    max-width: 45ch;
+    line-height: 1.6;
+}
+
+.nl-footer-cta-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: flex-end;
+}
+
+.nl-footer-cta .nl-btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.nl-footer-cta .nl-btn--primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.nl-footer-cta .nl-btn--secondary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background-color: transparent;
+}
+
+.nl-footer-cta .nl-btn--secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nl-footer-cta-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-xl);
+    }
+    .nl-footer-cta-actions {
+        justify-content: center;
+    }
+    .nl-footer-cta h2 {
+        font-size: var(--fs-3xl);
+    }
+    .nl-footer-cta p {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .nl-footer-cta {
+        padding: var(--space-2xl) 0;
+    }
+
+    .nl-footer-cta h2 {
+        font-size: var(--fs-2xl);
+    }
+
+    .nl-footer-cta p {
+        font-size: var(--fs-base);
+    }
+
+    .nl-footer-cta-actions {
+        flex-direction: column;
+        gap: var(--space-sm);
+        width: 100%;
+    }
+
+    .nl-footer-cta .nl-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Header Logo Mobile Optimization */
+@media (max-width: 480px) {
+    .nl-logo {
+        font-size: var(--fs-base);
+        max-width: 180px;
+        line-height: 1.2;
+    }
+}
+
+/* --- HOME PAGE --- */
+/* 
+   Home Page Styles - New Leaf
+   Focus: Editorial flow, Anchored Hero, Asymmetric layouts
+*/
+
+/* 1. Hero Section */
+.nl-home-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/img/hero_home.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light); /* Light text on dark overlay */
+    margin-bottom: var(--space-1xl); /* Spacing between hero and body */
+}
+
+.nl-home-hero .nl-eyebrow,
+.nl-home-hero .nl-intro-text,
+.nl-home-hero h1 {
+    color: var(--color-text-light);
+}
+
+.nl-home-hero .nl-nav-link {
+    color: var(--color-text-light);
+}
+
+.nl-home-hero .nl-nav-link:hover {
+    color: var(--color-secondary);
+}
+
+.nl-home-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    max-width: 18ch;
+    letter-spacing: -0.02em;
+}
+
+/* Hero Entrance States (One-time) */
+.hero-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.hero-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-reveal--headline { transition-delay: 100ms; }
+.hero-reveal--subtext { transition-delay: 250ms; }
+.hero-reveal--cta { transition-delay: 400ms; }
+
+/* 2. Trust Line */
+.nl-trust-line {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-main);
+}
+
+.nl-trust-line ul {
+    justify-content: space-between;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+/* 3. High-End Service List (Redesigned Side-Layout) */
+.highlight-section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+}
+
+.nl-service-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Intro | List */
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+/* Sticky Left Column */
+.nl-service-intro {
+    position: sticky;
+    top: 15vh; /* Comfortable eye level */
+    padding-right: var(--space-xl);
+}
+
+.nl-service-intro h2 {
+    font-size: var(--fs-3xl); /* Impactful but fits column */
+    line-height: 1.1;
+    margin-bottom: var(--space-xl);
+    max-width: 15ch;
+}
+
+/* Right Column List */
+.nl-service-list {
+    display: flex;
+    flex-direction: column;
+    /* First item top border creates the alignment line */
+}
+
+/* Redesigned "Capsule" CTA in Context */
+.nl-link-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    transition: all var(--transition-standard);
+    background-color: transparent;
+    width: fit-content;
+}
+
+.nl-capsule-arrow {
+    display: inline-block;
+    transition: transform var(--transition-standard);
+    font-size: 1.2em;
+    line-height: 0; /* Fix vertical alignment */
+}
+
+.nl-link-capsule:hover {
+    background-color: var(--color-text-main);
+    border-color: var(--color-text-main);
+    color: var(--color-bg-alt);
+}
+
+.nl-link-capsule:hover .nl-capsule-arrow {
+    transform: translateX(4px);
+    color: var(--color-primary);
+}
+
+/* Service Items */
+
+
+.nl-service-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 80px;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) 0;
+    border-top: 1px solid var(--color-border);
+    transition: background-color var(--transition-standard);
+    align-items: start;
+}
+
+/* Last borders */
+.nl-service-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nl-service-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.nl-service-num {
+    font-family: var(--font-heading);
+    font-size: var(--fs-lg);
+    color: var(--color-primary);
+    font-weight: 400;
+}
+
+.nl-service-head h3 {
+    font-size: clamp(2rem, 4vw, 3rem); /* Responsive, large typography */
+    margin: 0;
+    font-weight: 400; /* Editorial feel */
+    line-height: 1;
+    color: var(--color-text-main);
+    transition: color var(--transition-standard);
+}
+
+.nl-service-body p {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+    max-width: 45ch;
+}
+
+/* Capability Tags */
+.nl-capability-tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nl-capability-tags li {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    background-color: var(--color-bg-alt);
+    border-radius: 100px;
+    color: var(--color-text-main);
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+/* Hover Interaction */
+.nl-service-action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.nl-arrow-icon {
+    font-size: var(--fs-2xl);
+    color: var(--color-border);
+    transform: rotate(-45deg); /* Angled up-right */
+    transition: all var(--transition-standard);
+}
+
+/* Block Link Overlay */
+.nl-block-link {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Hover States */
+.nl-service-item:hover .nl-service-head h3 {
+    color: var(--color-primary);
+}
+
+.nl-service-item:hover .nl-arrow-icon {
+    color: var(--color-primary);
+    transform: rotate(0deg) translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nl-service-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .nl-service-intro {
+        position: static;
+        padding-right: 0;
+        margin-bottom: 0;
+    }
+
+    .nl-service-intro h2 {
+        max-width: none;
+        font-size: var(--fs-3xl);
+    }
+    
+    .nl-service-item {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        padding: var(--space-xl) 0;
+    }
+
+    .nl-service-action {
+        display: none; /* Hide big arrow on mobile to save space */
+    }
+}
+
+/* 4. Featured Work */
+.nl-case-study {
+    position: relative;
+}
+
+.nl-case-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-color: var(--color-bg-alt);
+    margin-bottom: var(--space-md);
+    transition: var(--transition-slow);
+    overflow: hidden;
+}
+
+.nl-case-study:hover .nl-case-img {
+    background-color: var(--color-secondary);
+}
+
+.nl-case-meta {
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* 5. Process List */
+.nl-process-list {
+    counter-reset: process-counter;
+    list-style: none; /* Ensure no default bullets */
+}
+
+.nl-process-list li {
+    position: relative;
+    padding-left: var(--space-xl);
+    font-size: var(--fs-lg);
+}
+
+.nl-process-list li::before {
+    counter-increment: process-counter;
+    content: counter(process-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    font-family: var(--font-heading);
+    font-size: var(--fs-sm);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    /* Ensure numbers aren't flush with edge on smaller screens */
+    .nl-process-list {
+        padding-left: var(--space-xs);
+    }
+}
+
+/* Utility: Background Alt */
+.nl-bg-alt {
+    background-color: var(--color-bg-alt);
+}
+
+/* 6. Explore Promo (Feature Section) */
+.nl-explore-promo {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    overflow: hidden;
+    position: relative;
+    padding: 12rem 0; /* Massive vertical spacing */
+}
+
+.nl-explore-promo h2,
+.nl-explore-promo p,
+.nl-explore-promo .nl-eyebrow {
+    color: var(--color-text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.nl-explore-promo h2 {
+    font-size: clamp(3rem, 8vw, 6rem); /* Huge, impactful typography */
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+}
+
+.nl-explore-promo p {
+    font-size: var(--fs-xl);
+    max-width: 40ch;
+    margin-bottom: var(--space-xl);
+    opacity: 0.8;
+}
+
+.nl-explore-layout {
+    align-items: center;
+    position: relative;
+}
+
+.nl-explore-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.nl-decor-circle {
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-glow 8s infinite alternate ease-in-out;
+}
+
+.nl-decor-circle::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+}
+
+.nl-decor-circle::after {
+    content: "";
+    position: absolute;
+    inset: 100px;
+    background: radial-gradient(circle at 50% 50%, var(--color-primary), transparent 70%);
+    opacity: 0.2;
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@media (max-width: 900px) {
+    .nl-explore-promo {
+        padding: var(--space-3xl) 0;
+        text-align: center;
+    }
+    
+    .nl-explore-layout {
+        flex-direction: column;
+    }
+
+    .nl-explore-decor {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: var(--space-2xl);
+    }
+
+    .nl-decor-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .nl-explore-promo p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* 7. Final CTA */
+.nl-cta {
+    text-align: center;
+    border-top: none; /* Removed border as prev section is dark */
+}
+
+.nl-cta .nl-stack {
+    align-items: center;
+}
+
+.nl-cta h2 {
+    font-size: var(--fs-4xl);
+}
+
+@media (max-width: 768px) {
+    .nl-home-hero {
+        min-height: 70vh;
+    }
+
+    .nl-home-hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        max-width: none;
+    }
+
+    .nl-trust-line ul {
+        justify-content: flex-start;
+        gap: var(--space-xl);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--space-xs);
+    }
+
+    .nl-cta h2 {
+        font-size: var(--fs-2xl);
+    }
+
+    .nl-hero-actions {
+        flex-direction: column;
+        gap: var(--space-sm);
+        width: 100%;
+    }
+
+    .nl-hero-actions .nl-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nl-home-hero {
+        min-height: 60vh;
+        padding-top: 100px;
+    }
+
+    .nl-capability-tags li {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+}

@@ -5,7 +5,7 @@
 
 /* 1. Page Intro Overlay - Refined High-End Look */
 .nl-page-intro {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../assets/img/hero_contact.png');
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../assets/img/hero_contact.webp');
     background-size: cover;
     background-position: center;
     border-bottom: 1px solid var(--color-border);

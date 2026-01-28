@@ -812,7 +812,7 @@ p:last-child {
     background-position: center;
     border-bottom: 1px solid var(--color-border);
     color: var(--color-text-light); /* Light text on dark overlay */
-    margin-bottom: var(--space-1xl); /* Spacing between hero and body */
+    margin-bottom: var(--space-xl); /* Spacing between hero and body */
 }
 
 .nl-home-hero .nl-eyebrow,

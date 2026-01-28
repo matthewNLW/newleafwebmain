@@ -54,6 +54,7 @@
     font-weight: 600;
     color: var(--color-text-muted);
     letter-spacing: 0.1em;
+    min-width: 2rem; /* Fixed width for alignment */
 }
 
 .nl-service-item h3 {
@@ -108,11 +109,11 @@
 }
 
 .nl-service-body-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
     max-width: 900px;
-    margin-left: 92px; /* Align with heading after the category number */
+    margin-left: calc(2rem + var(--space-xl)); /* Align with heading (cat width + gap) */
 }
 
 .nl-service-desc-col {

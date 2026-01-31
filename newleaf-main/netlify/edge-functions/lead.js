@@ -160,24 +160,35 @@ export default async (request, context) => {
     const notionPayload = {
       parent: { database_id: notionDbId },
       properties: {
+        // "Name" is the Title property in Notion. usually used for Project/Deal Name.
+        // We'll set it to "Business Name" or "New Web Lead"
         "Name": {
-          title: [ { text: { content: name } } ]
+          title: [
+            { text: { content: business || name || "New Website Lead" } }
+          ]
         },
-        "Email": {
-          email: email
+        "Client Name": {
+          rich_text: [ { text: { content: name } } ]
         },
-        "Company": {
+        "Business Name": {
           rich_text: [ { text: { content: business } } ]
         },
-        "Service": {
-           select: { name: service || "Unsure" }
+        "Client Email": {
+          email: email
         },
-        "Budget": {
-           select: { name: budget || "Unsure" }
-        },
-        "Phone": {
+        "Client Phone": {
             phone_number: phone || null
         },
+        "Website Type": {
+           select: { name: service || "Unsure" }
+        },
+        "Budget Range": {
+           select: { name: budget || "Unsure" }
+        },
+        "Timeline": {
+           select: { name: timeline || "Flexible" }
+        },
+        // We put extra details in the page body
       },
       children: [
         {
@@ -198,7 +209,7 @@ export default async (request, context) => {
           object: "block",
           type: "paragraph",
           paragraph: {
-            rich_text: [{ text: { content: `Branding: ${branding}\nPages: ${pages}\nTimeline: ${timeline}` } }]
+            rich_text: [{ text: { content: `Pages: ${pages}\nBranding: ${branding}` } }]
           }
         },
         {

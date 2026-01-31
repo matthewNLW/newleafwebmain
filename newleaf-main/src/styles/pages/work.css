@@ -167,6 +167,13 @@
     opacity: 1;
 }
 
+/* Critical Fix: Reset transform context for fixed modal */
+.nl-deck-card.is-reading {
+    transform: none !important;
+    overflow: visible !important;
+    z-index: 2000 !important; /* Above everything */
+}
+
 .nl-deck-img {
     width: 100%;
     height: 100%;
@@ -284,7 +291,7 @@
     flex-direction: column;
 }
 
-.nl-deck-media.is-reading .nl-case-study-view {
+.nl-deck-card.is-reading .nl-case-study-view {
     opacity: 1;
     pointer-events: all;
     transform: translateY(0);
@@ -382,7 +389,7 @@ body.is-reading-case {
 }
 
 /* Hide Overlay Button when reading */
-.nl-deck-media.is-reading .nl-case-overlay-btn {
+.nl-deck-card.is-reading .nl-case-overlay-btn {
     opacity: 0;
     pointer-events: none;
 }

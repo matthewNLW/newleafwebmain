@@ -12,19 +12,9 @@ export function initWorkInteractions() {
     viewButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            let cardMedia = btn.closest('.nl-deck-media');
-            
-            // If button is outside media (mobile button), find the media via parent card
-            if (!cardMedia) {
-                const card = btn.closest('.nl-deck-card');
-                if (card) {
-                    cardMedia = card.querySelector('.nl-deck-media');
-                }
-            }
-
-            if (cardMedia) {
-                cardMedia.classList.add('is-reading');
+            const card = btn.closest('.nl-deck-card');
+            if (card) {
+                card.classList.add('is-reading');
                 document.body.classList.add('is-reading-case');
             }
         });
@@ -34,9 +24,9 @@ export function initWorkInteractions() {
     closeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const cardMedia = btn.closest('.nl-deck-media');
-            if (cardMedia) {
-                cardMedia.classList.remove('is-reading');
+            const card = btn.closest('.nl-deck-card');
+            if (card) {
+                card.classList.remove('is-reading');
                 document.body.classList.remove('is-reading-case');
             }
         });

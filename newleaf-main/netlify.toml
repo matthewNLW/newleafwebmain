@@ -60,6 +60,11 @@
   to = "/pages/terms.html"
   status = 200
 
+[[redirects]]
+  from = "/web-developer-pawleys-island-sc"
+  to = "/pages/pawleys-island-web-developer.html"
+  status = 200
+
 # Fallback for direct HTML access if needed, or 404
 [[redirects]]
   from = "/*"

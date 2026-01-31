@@ -145,8 +145,8 @@ export default async (request, context) => {
   }
 
   // 2. Send to Notion
-  const notionToken = Deno.env.get("NOTION_TOKEN");
-  const notionDbId = Deno.env.get("NOTION_DB_ID");
+  const notionToken = Deno.env.get("NOTION_TOKEN") || Deno.env.get("NOTION_API_KEY");
+  const notionDbId = Deno.env.get("NOTION_DB_ID") || Deno.env.get("NOTION_DATABASE_ID");
 
   if (!notionToken || !notionDbId) {
      console.error(`[Lead Warning] Notion not configured. Data received but not saved.`);

@@ -362,9 +362,17 @@
 @media (max-width: 992px) {
     .nl-case-study-view {
         position: fixed; /* Go full screen on mobile */
-        z-index: 1000; /* Above everything */
-        background-color: var(--color-bg); /* Use main bg */
-        padding-top: 60px; /* Space for close button area */
+        z-index: 9999; /* Above everything including header */
+        background-color: var(--color-bg-main); /* Fixed variable name */
+        padding-top: 80px; /* Space for close button area */
+        color: var(--color-text-main);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nl-deck-card.is-reading .nl-case-study-view {
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .nl-case-scroll {

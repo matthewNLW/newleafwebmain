@@ -157,11 +157,40 @@ export default async (request, context) => {
   }
 
   try {
+    // --- MAPPING VALUES TO NOTION OPTIONS ---
+    // Maps form values to the Exact text found in Notion Select options to prevent new tag creation or errors
+    
+    const serviceMap = {
+        "business": "Business / Service Website",
+        "ecommerce": "Ecommerce",
+        "booking": "Booking",
+        "portfolio": "Portfolio",
+        "unsure": "Other"
+    };
+
+    const budgetMap = {
+        "1000-2500": "$1k–$2.5k",
+        "2500-5000": "$2.5k–$5k",
+        "5000+": "$5k+",
+        "unsure": "Not sure"
+    };
+
+    const timelineMap = {
+        "asap": "ASAP",
+        "1-2weeks": "1–2 weeks", // Note the specific dash/spacing if matching Notion
+        "3-4weeks": "3–4 weeks",
+        "flexible": "Flexible"
+    };
+
+    // Use mapped value, or fallback to original capitalized, or "Unsure"
+    const finalService = serviceMap[service] || service || "Other";
+    const finalBudget = budgetMap[budget] || budget || "Not sure";
+    const finalTimeline = timelineMap[timeline] || timeline || "Flexible";
+
+
     const notionPayload = {
       parent: { database_id: notionDbId },
       properties: {
-        // "Name" is the Title property in Notion. usually used for Project/Deal Name.
-        // We'll set it to "Business Name" or "New Web Lead"
         "Name": {
           title: [
             { text: { content: business || name || "New Website Lead" } }
@@ -180,15 +209,20 @@ export default async (request, context) => {
             phone_number: phone || null
         },
         "Website Type": {
-           select: { name: service || "Unsure" }
+           select: { name: finalService }
         },
         "Budget Range": {
-           select: { name: budget || "Unsure" }
+           select: { name: finalBudget }
         },
         "Timeline": {
-           select: { name: timeline || "Flexible" }
+           select: { name: finalTimeline }
         },
-        // We put extra details in the page body
+        "Deal Status": {
+            select: { name: "New (Form Submitted)" }
+        },
+        "Lead Source": {
+            select: { name: "Inbound" }
+        }
       },
       children: [
         {

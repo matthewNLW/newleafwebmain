@@ -12,4 +12,7 @@ node_modules/
 
 # Build outputs
 dist/
- 
+
+# Local Env Files
+.env
+.env.local

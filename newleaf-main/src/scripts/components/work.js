@@ -25,8 +25,7 @@ export function initWorkInteractions() {
 
             if (cardMedia) {
                 cardMedia.classList.add('is-reading');
-                // Ensure the user sees the opened case study (UX for mobile)
-                cardMedia.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.body.classList.add('is-reading-case');
             }
         });
     });
@@ -38,6 +37,7 @@ export function initWorkInteractions() {
             const cardMedia = btn.closest('.nl-deck-media');
             if (cardMedia) {
                 cardMedia.classList.remove('is-reading');
+                document.body.classList.remove('is-reading-case');
             }
         });
     });

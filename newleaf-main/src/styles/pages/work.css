@@ -274,12 +274,12 @@
 .nl-case-study-view {
     position: absolute;
     inset: 0;
-    background-color: var(--color-bg-alt); /* Matches card bg */
-    z-index: 30;
+    background-color: var(--color-bg-alt); 
+    z-index: 100; /* Higher than header for reading */
     opacity: 0;
     pointer-events: none;
-    transform: translateY(10px);
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     display: flex;
     flex-direction: column;
 }
@@ -292,10 +292,10 @@
 
 .nl-close-case-btn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 40px;
-    height: 40px;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid var(--color-border);
     background-color: var(--color-bg-alt);
@@ -306,7 +306,7 @@
     cursor: pointer;
     font-size: 1.5rem;
     line-height: 1;
-    z-index: 40;
+    z-index: 110;
     transition: all var(--transition-fast);
 }
 
@@ -318,21 +318,11 @@
 }
 
 .nl-case-scroll {
-    padding: var(--space-2xl) var(--space-xl);
+    padding: var(--space-3xl) var(--space-xl);
     overflow-y: auto;
     height: 100%;
-    /* Custom Scrollbar */
     scrollbar-width: thin;
     scrollbar-color: var(--color-border) transparent;
-}
-
-.nl-case-scroll::-webkit-scrollbar {
-    width: 6px;
-}
-
-.nl-case-scroll::-webkit-scrollbar-thumb {
-    background-color: var(--color-border);
-    border-radius: 4px;
 }
 
 .nl-case-body {
@@ -341,12 +331,13 @@
 }
 
 .nl-case-body h4 {
-    font-size: var(--fs-xs);
+    font-size: var(--font-body); /* Slightly larger for readability */
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: var(--color-primary);
-    margin-bottom: var(--space-sm);
-    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-xl);
 }
 
 .nl-case-body h4:first-child {
@@ -354,10 +345,40 @@
 }
 
 .nl-case-body p {
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-    line-height: 1.7;
-    margin-bottom: var(--space-md);
+    font-size: var(--fs-base); /* Better reading size */
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+}
+
+/* Mobile Immersive Mode (Fullscreen) */
+@media (max-width: 992px) {
+    .nl-case-study-view {
+        position: fixed; /* Go full screen on mobile */
+        z-index: 1000; /* Above everything */
+        background-color: var(--color-bg); /* Use main bg */
+        padding-top: 60px; /* Space for close button area */
+    }
+
+    .nl-case-scroll {
+        padding: var(--space-xl);
+    }
+
+    .nl-case-body p {
+        font-size: var(--fs-md); /* Slightly larger on mobile for accessibility */
+    }
+
+    .nl-close-case-btn {
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--color-bg-alt);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+}
+
+/* Class to block background scrolling - apply to body via JS */
+body.is-reading-case {
+    overflow: hidden !important;
 }
 
 /* Hide Overlay Button when reading */
@@ -366,21 +387,22 @@
     pointer-events: none;
 }
 
-/* Mobile Case Study Button */
+/* Mobile Case Study Button - Adjusted for better spacing */
 .nl-mobile-case-btn {
-    display: none; /* Hidden by default (desktop) */
-    background: none;
+    display: none; 
+    background-color: var(--color-bg-alt);
     border: 1px solid var(--color-border);
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 1.5rem;
     font-family: var(--font-body);
     font-size: var(--fs-xs);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: var(--color-text-main);
     cursor: pointer;
     margin-bottom: var(--space-md);
-    transition: all var(--transition-fast);
+    transition: all var(--transition-standard);
+    border-radius: var(--border-radius-sm);
 }
 
 .nl-mobile-case-btn:hover {
@@ -396,7 +418,6 @@
         text-align: center;
     }
 
-    /* Make the Visit Link look like a button matching the View Case Study button */
     .nl-deck-content .nl-link-arrow {
         display: flex;
         width: 100%;
@@ -404,17 +425,18 @@
         align-items: center;
         background: none;
         border: 1px solid var(--color-border);
-        padding: 0.75rem 1.5rem;
+        padding: 1rem 1.5rem;
         font-family: var(--font-body);
         font-size: var(--fs-xs);
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
         color: var(--color-text-main);
         text-decoration: none;
         margin-top: 0;
-        transition: all var(--transition-fast);
-        box-sizing: border-box; /* Ensure padding doesn't overflow width */
+        transition: all var(--transition-standard);
+        box-sizing: border-box;
+        border-radius: var(--border-radius-sm);
     }
 
     .nl-deck-content .nl-link-arrow:hover {
@@ -423,7 +445,6 @@
         border-color: var(--color-primary);
     }
     
-    /* Ensure arrow behaves well */
     .nl-deck-content .nl-link-arrow .arrow {
         margin-left: 8px;
     }

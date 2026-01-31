@@ -1,8 +1,13 @@
+// Simple in-memory rate limit map (clears on function restart/cold boot)
+// Note: For distributed persistence, consider using Netlify Blobs or a KV store.
+const rateLimitMap = new Map();
+
 export default async (request, context) => {
   const origin = request.headers.get("Origin") || "";
   const allowedOrigins = new Set([
     "https://newleafweb.com",
     "https://www.newleafweb.com",
+    "http://localhost:8888" // Allow local testing
   ]);
 
   const corsHeaders = {
@@ -20,8 +25,37 @@ export default async (request, context) => {
 
   // Enforce method
   if (request.method !== "POST") {
+    console.error(`[Lead Error] Invalid Method: ${request.method} from ${origin}`);
     return new Response("Method not allowed", { status: 405, headers: corsHeaders });
   }
+
+  // Rate Limiting (Simple IP-based)
+  const ip = request.headers.get("CF-Connecting-IP") || request.headers.get("x-nf-client-connection-ip") || "unknown";
+  const now = Date.now();
+  const windowMs = 60 * 1000; // 1 minute window
+  const limit = 5; // 5 requests per minute
+
+  if (rateLimitMap.has(ip)) {
+    const { count, startTime } = rateLimitMap.get(ip);
+    if (now - startTime < windowMs) {
+      if (count >= limit) {
+        console.error(`[Lead Warining] Rate limit exceeded for IP: ${ip}`);
+        return new Response(JSON.stringify({ error: "Too many requests. Please try again later." }), { 
+            status: 429, 
+            headers: corsHeaders 
+        });
+      }
+      rateLimitMap.set(ip, { count: count + 1, startTime });
+    } else {
+      rateLimitMap.set(ip, { count: 1, startTime: now });
+    }
+  } else {
+    rateLimitMap.set(ip, { count: 1, startTime: now });
+  }
+
+  // Cleanup old entries periodically (simple approach) or let them expire naturally on cold start
+  if (rateLimitMap.size > 1000) rateLimitMap.clear();
+
 
   // Parse body (JSON)
   let data = {};
@@ -31,18 +65,49 @@ export default async (request, context) => {
     if (contentType.includes("application/json")) {
       data = await request.json();
     } else {
-      // Fallback for form data if needed (though client sends JSON)
       const formData = await request.formData();
       data = Object.fromEntries(formData);
     }
   } catch (e) {
+    console.error(`[Lead Error] Invalid Request Body from ${ip}`);
     return new Response(JSON.stringify({ error: "Invalid Request Body" }), { status: 400, headers: corsHeaders });
   }
+
+  // --- VALIDATION & SANITIZATION ---
+  const sanitize = (str) => {
+    if (typeof str !== 'string') return '';
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim(); // Basic HTML escape
+  };
+
+  const name = sanitize(data.name);
+  const email = sanitize(data.email);
+  const business = sanitize(data.company || data.business);
+  const service = sanitize(data.service);
+  const budget = sanitize(data.budget);
+  const phone = sanitize(data.phone);
+  const message = sanitize(data.message);
+  const sourcePage = sanitize(data.page);
+  const branding = sanitize(data.branding);
+  const timeline = sanitize(data.timeline);
+  const pages = sanitize(data.pages);
+
+  // Validate Required Fields
+  if (!name || name.length > 100) {
+    return new Response(JSON.stringify({ error: "Invalid name provided." }), { status: 400, headers: corsHeaders });
+  }
+  
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 100) {
+    return new Response(JSON.stringify({ error: "Invalid email address." }), { status: 400, headers: corsHeaders });
+  }
+
+  // --- END VALIDATION ---
+
 
   // Get Token
   const token = data["cf-turnstile-response"] || data["turnstileToken"] || data["token"] || "";
 
   if (!token) {
+    console.error(`[Lead Error] Missing Turnstile token from ${ip}`);
     return new Response(
       JSON.stringify({ error: "Missing Turnstile token" }),
       { status: 403, headers: corsHeaders }
@@ -50,12 +115,11 @@ export default async (request, context) => {
   }
 
   // 1. Verify with Turnstile
-  const ip = request.headers.get("CF-Connecting-IP") || request.headers.get("x-nf-client-connection-ip") || "";
   const turnstileSecret = Deno.env.get("TURNSTILE_SECRET");
 
   if (!turnstileSecret) {
-    console.error("TURNSTILE_SECRET is not set.");
-    return new Response(JSON.stringify({ error: "Server Configuration Error (Turnstile)" }), { 
+    console.error(`[Lead Fatal] TURNSTILE_SECRET is not set.`);
+    return new Response(JSON.stringify({ error: "Server Configuration Error" }), { 
         status: 500, 
         headers: { ...corsHeaders, "Content-Type": "application/json" } 
     });
@@ -73,6 +137,7 @@ export default async (request, context) => {
 
   const verify = await verifyRes.json();
   if (!verify.success) {
+    console.error(`[Lead Error] Turnstile Failed for ${ip}:`, verify['error-codes']);
     return new Response(
       JSON.stringify({ error: "Turnstile Verification Failed", details: verify }),
       { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -84,44 +149,35 @@ export default async (request, context) => {
   const notionDbId = Deno.env.get("NOTION_DB_ID");
 
   if (!notionToken || !notionDbId) {
-     console.error("NOTION_TOKEN or NOTION_DB_ID is not set.");
-     // We return 200 to client to not break their UX, but log the error
-     return new Response(JSON.stringify({ ok: true, warning: "Lead saved locally (mock) - Notion not configured" }), {
+     console.error(`[Lead Warning] Notion not configured. Data received but not saved.`);
+     return new Response(JSON.stringify({ ok: true, warning: "Lead saved locally (mock)" }), {
         status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
   }
 
   try {
-    // Construct Notion Payload
-    // Mapping incoming `data` to Notion Properties
     const notionPayload = {
       parent: { database_id: notionDbId },
       properties: {
         "Name": {
-          title: [
-            { text: { content: data.name || "Unknown Lead" } }
-          ]
+          title: [ { text: { content: name } } ]
         },
         "Email": {
-          email: data.email || null
+          email: email
         },
         "Company": {
-          rich_text: [
-             { text: { content: data.company || data.business || "" } }
-          ]
+          rich_text: [ { text: { content: business } } ]
         },
         "Service": {
-           select: { name: data.service || "Unsure" }
+           select: { name: service || "Unsure" }
         },
         "Budget": {
-           select: { name: data.budget || "Unsure" }
+           select: { name: budget || "Unsure" }
         },
         "Phone": {
-            phone_number: data.phone || null
+            phone_number: phone || null
         },
-        // We put extra details in the page body (children) or a 'Message' field if it exists.
-        // Assuming there isn't a specific 'Message' property, we'll put it in the body.
       },
       children: [
         {
@@ -135,14 +191,21 @@ export default async (request, context) => {
           object: "block",
           type: "paragraph",
           paragraph: {
-            rich_text: [{ text: { content: data.message || "No additional details provided." } }]
+            rich_text: [{ text: { content: message || "No additional details provided." } }]
+          }
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            rich_text: [{ text: { content: `Branding: ${branding}\nPages: ${pages}\nTimeline: ${timeline}` } }]
           }
         },
         {
              object: "block",
              type: "paragraph",
              paragraph: {
-                 rich_text: [{ text: { content: `Source Path: ${data.page || 'Unknown'}` } }]
+                 rich_text: [{ text: { content: `Source Path: ${sourcePage}` } }]
              }
         }
       ]
@@ -160,13 +223,14 @@ export default async (request, context) => {
 
     if (!notionRes.ok) {
         const notionErr = await notionRes.json();
-        console.error("Notion API Error:", notionErr);
-        // Don't fail the request to the client if Notion fails, just log it.
-        // Or return error if strict. Let's return success but log.
+        console.error(`[Lead Error] Notion API Failed:`, notionErr);
+        // We log the error but still return "ok" to the client so they see a success message (graceful degradation)
+    } else {
+        console.log(`[Lead Success] New lead created for: ${email}`);
     }
 
   } catch (err) {
-      console.error("Edge Function Error:", err);
+      console.error(`[Lead Exception]`, err);
   }
 
   return new Response(JSON.stringify({ ok: true }), {

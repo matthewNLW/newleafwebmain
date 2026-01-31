@@ -269,7 +269,6 @@ export default async (request, context) => {
     if (!notionRes.ok) {
         const notionErr = await notionRes.json();
         console.error(`[Lead Error] Notion API Failed:`, notionErr);
-        // We log the error but still return "ok" to the client so they see a success message (graceful degradation)
     } else {
         console.log(`[Lead Success] New lead created for: ${email}`);
     }

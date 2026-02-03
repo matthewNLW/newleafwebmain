@@ -1,0 +1,35 @@
+﻿Connecting to Notion Database: b3fad7118e7c49eca930d7d5e2f8664f...
+
+Γ£à SUCCESS: Connected to Database!
+Database Name: Deals
+
+=== COLUMN SCHEMA (Expected vs Actual) ===
+Your Code expects: Name, Email, Company, Service, Budget, Phone
+ACTUAL COLUMNS FOUND:
+- "Notes" (rich_text)
+- "Sales Rep Email" (email)
+- "Deal Status" (select)
+- "Sales Rep Name" (rich_text)
+- "Timeline" (select)
+- "Build Start Date" (date)
+- "Commission Paid" (checkbox)
+- "Commission Eligible" (checkbox)
+- "Project Board Link" (url)
+- "Budget Range" (select)
+- "Client Name" (rich_text)
+- "Deal Value ($)" (number)
+- "Client Email" (email)
+- "Payout Date" (date)
+- "Website Type" (select)
+- "Commission Amount" (formula)
+- "Deal ID" (unique_id)
+- "Client Phone" (phone_number)
+- "Payment Status" (select)
+- "Lead Source" (select)
+- "Stripe Invoice Link" (url)
+- "Commission Rate" (number)
+- "Target Launch Date" (date)
+- "Business Name" (rich_text)
+- "Name" (title)
+
+If these don't match exactly (case-sensitive), the form will fail.

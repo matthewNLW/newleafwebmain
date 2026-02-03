@@ -240,3 +240,142 @@
         font-size: var(--fs-lg);
     }
 }
+
+/* Interventions & Engagement Section (List Style) */
+.nl-interventions {
+    background-color: transparent;
+    border: none;
+    margin-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+}
+
+.nl-engagement-models {
+    background-color: transparent;
+    border: none;
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+}
+
+.nl-intervention-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-xl);
+}
+
+.nl-intervention-card {
+    display: grid;
+    grid-template-columns: 2rem 1.5fr 2fr 1fr; /* Cat | Title+Tag | Desc | CTA */
+    gap: var(--space-xl);
+    align-items: baseline;
+    padding: var(--space-3xl) 0;
+    margin-bottom: var(--space-3xl);
+    border-top: 1px solid var(--color-border);
+    background: transparent;
+    transition: background-color var(--transition-fast);
+}
+
+.nl-intervention-card:last-child {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0;
+}
+
+.nl-intervention-card:hover {
+    background-color: transparent;
+    border-color: var(--color-text);
+}
+
+/* 1. Header Area (Title + Tag) */
+.nl-intervention-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin-bottom: 0;
+}
+
+.nl-intervention-head h3 {
+    font-size: var(--fs-xl); /* Match main list size */
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.nl-scope-tag {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    white-space: nowrap;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* 2. Description Area */
+.nl-intervention-card p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 50ch;
+}
+
+/* 3. Footer/CTA Area */
+.nl-intervention-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Right align CTA */
+    gap: var(--space-2xs);
+    padding-top: 0;
+    padding-bottom: var(--space-xl);
+    border-top: none;
+    text-align: right;
+}
+
+.nl-outcome-label {
+    font-size: 0.7rem; /* Tiny label */
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+}
+
+.nl-text-link {
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nl-text-link:hover {
+    color: var(--color-accent);
+}
+
+/* Numbering Column (Pseudo-element or explicit) */
+/* Note: We will use the scope tag as the 'meta' column or add an explicit counter if needed. 
+   For now, the grid column '2rem' acts as the gutter/number space similar to the main list. 
+   We will rely on the HTML structure adjusting slightly to put something in that first col if needed, 
+   or leave it valid empty space for alignment. 
+*/
+
+@media (max-width: 900px) {
+    .nl-intervention-card {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .nl-intervention-footer {
+        align-items: flex-start;
+        text-align: left;
+        margin-top: var(--space-sm);
+    }
+}

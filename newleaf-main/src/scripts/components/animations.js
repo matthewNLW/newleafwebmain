@@ -42,7 +42,10 @@ export const initServicesInteractions = () => {
     
     serviceItems.forEach(item => {
         // Toggle Active State (Progressive Disclosure)
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const isActive = item.classList.contains('is-active');
             
             // Close others

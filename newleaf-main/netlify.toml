@@ -92,6 +92,9 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# ASSETS: Cache for 1 year. 
+# IMPORTANT: If you change these files, you MUST bump the ?v= number in the HTML files 
+# to force visitors to download the new version (e.g., change ?v=10 to ?v=11).
 [[headers]]
   for = "/styles/*"
   [headers.values]

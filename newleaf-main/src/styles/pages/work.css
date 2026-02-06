@@ -170,14 +170,17 @@
 /* Critical Fix: Reset transform context for fixed modal */
 /* Case Study Reading Mode State */
 .nl-deck-card.is-reading {
-    position: relative; /* Release sticky lock so we can scroll the full content */
+    position: relative; /* Release sticky lock */
     top: auto !important;
     height: auto !important; 
     min-height: 80vh; 
     grid-template-columns: 1fr; 
     overflow: visible !important;
-    z-index: 1000 !important; /* Ensure it stays above other elements during flow */
+    z-index: 1000 !important;
     margin-bottom: var(--space-3xl);
+    /* CRITICAL: Remove transform and transition which break position: fixed children */
+    transform: none !important;
+    transition: none !important;
 }
 
 .nl-deck-card.is-reading .nl-deck-media,

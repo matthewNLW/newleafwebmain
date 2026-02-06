@@ -170,23 +170,22 @@
 /* Critical Fix: Reset transform context for fixed modal */
 /* Case Study Reading Mode State */
 .nl-deck-card.is-reading {
-    position: relative; /* Release sticky lock */
-    top: auto !important;
+    position: static !important; /* CRITICAL: Static position releases the fixed child from the card's stacking context */
     height: auto !important; 
     min-height: 80vh; 
     grid-template-columns: 1fr; 
     overflow: visible !important;
     z-index: 1000 !important;
     margin-bottom: var(--space-3xl);
-    /* CRITICAL: Remove transform and transition which break position: fixed children */
     transform: none !important;
     transition: none !important;
 }
 
 .nl-deck-card.is-reading .nl-deck-media,
 .nl-deck-card.is-reading .nl-deck-content {
-    display: none; /* Hide summary view when reading */
+    display: none !important; /* Hide summary view when reading */
 }
+
 
 .nl-deck-img {
     width: 100%;
@@ -297,14 +296,12 @@
     inset: 0;
     background-color: var(--color-bg-alt); 
     z-index: 2000; /* Above everything */
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    display: flex;
+    display: none; /* Hide by default */
     flex-direction: column;
 }
 
 .nl-deck-card.is-reading .nl-case-study-view {
+    display: flex; /* Show when reading */
     opacity: 1;
     visibility: visible;
     pointer-events: auto;

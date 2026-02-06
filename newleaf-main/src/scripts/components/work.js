@@ -19,19 +19,28 @@ export function initWorkInteractions() {
     console.log(`Found ${viewButtons.length} case study buttons.`);
 
     function openCase(card) {
-        if (!card) return;
-        console.log('Opening case study:', card.querySelector('.nl-deck-title')?.textContent);
+        if (!card) {
+            console.error('Work Interaction Error: Could not find card to open.');
+            return;
+        }
+        const title = card.querySelector('.nl-deck-title')?.textContent;
+        console.log('--- Case Study Triggered ---');
+        console.log('Project:', title);
         
         // Lock body scroll
         document.body.classList.add('is-reading-case');
+        console.log('Body class added: is-reading-case');
         
         // Reset internal scroll position
         const scrollContainer = card.querySelector('.nl-case-scroll');
         if (scrollContainer) {
             scrollContainer.scrollTop = 0;
+            console.log('Scroll position reset.');
         }
         
         card.classList.add('is-reading');
+        console.log('Card class added: is-reading');
+        console.log('---------------------------');
     }
 
 

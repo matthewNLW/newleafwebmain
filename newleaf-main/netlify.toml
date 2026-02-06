@@ -9,66 +9,63 @@
   path = "/lead"
   function = "lead"
 
+
+
 # 1. Page Rewrites (SPA-like or pretty URLs)
 [[redirects]]
-  from = "/"
-  to = "/pages/index.html"
-  status = 200
-
-[[redirects]]
   from = "/about"
-  to = "/pages/about.html"
+  to = "/about.html"
   status = 200
 
 [[redirects]]
   from = "/services"
-  to = "/pages/services.html"
+  to = "/services.html"
   status = 200
 
 [[redirects]]
   from = "/work"
-  to = "/pages/work.html"
+  to = "/work.html"
   status = 200
 
 [[redirects]]
   from = "/process"
-  to = "/pages/process.html"
+  to = "/process.html"
   status = 200
 
 [[redirects]]
   from = "/explore"
-  to = "/pages/explore.html"
+  to = "/explore.html"
   status = 200
 
 [[redirects]]
   from = "/contact"
-  to = "/pages/contact.html"
+  to = "/contact.html"
   status = 200
 
 [[redirects]]
   from = "/thanks"
-  to = "/pages/thanks.html"
+  to = "/thanks.html"
   status = 200
 
 [[redirects]]
   from = "/privacy"
-  to = "/pages/privacy.html"
+  to = "/privacy.html"
   status = 200
 
 [[redirects]]
   from = "/terms"
-  to = "/pages/terms.html"
+  to = "/terms.html"
   status = 200
 
 [[redirects]]
   from = "/web-developer-pawleys-island-sc"
-  to = "/pages/pawleys-island-web-developer.html"
+  to = "/pawleys-island-web-developer.html"
   status = 200
 
 # Fallback for direct HTML access if needed, or 404
 [[redirects]]
   from = "/*"
-  to = "/pages/index.html"
+  to = "/index.html"
   status = 404
 
 # 2. Security & Caching Headers

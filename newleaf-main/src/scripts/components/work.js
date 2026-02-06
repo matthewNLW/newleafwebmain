@@ -5,13 +5,22 @@
  */
 
 export function initWorkInteractions() {
+    console.log('Work interactions initializing v40...');
     const cards = document.querySelectorAll('.nl-deck-card');
     const viewButtons = document.querySelectorAll('.nl-case-overlay-btn, .nl-mobile-case-btn');
     const closeButtons = document.querySelectorAll('.nl-close-case-btn');
     const nextButtons = document.querySelectorAll('.nl-next-case-btn');
 
+    if (viewButtons.length === 0) {
+        console.warn('Work Interaction Error: No view buttons found.');
+        return;
+    }
+
+    console.log(`Found ${viewButtons.length} case study buttons.`);
+
     function openCase(card) {
         if (!card) return;
+        console.log('Opening case study:', card.querySelector('.nl-deck-title')?.textContent);
         
         // Lock body scroll
         document.body.classList.add('is-reading-case');
@@ -24,6 +33,7 @@ export function initWorkInteractions() {
         
         card.classList.add('is-reading');
     }
+
 
     function closeCase(card) {
         if (!card) return;

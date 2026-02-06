@@ -18,6 +18,13 @@ export function initWorkInteractions() {
 
     console.log(`Found ${viewButtons.length} case study buttons.`);
 
+    // Specialized touch diagnostic
+    viewButtons.forEach(btn => {
+        btn.addEventListener('touchstart', () => {
+             console.log('Mobile TouchStart detected on button:', btn.textContent);
+        }, { passive: true });
+    });
+
     function openCase(card) {
         if (!card) {
             console.error('Work Interaction Error: Could not find card to open.');

@@ -1,190 +1,233 @@
 /* 
-   Contact Page Styles - New Leaf
-   Focus: Sleek, Professional, Editorial
+   Contact Page - High-Authority Editorial Layout
+   Discipline: Balanced, Informative, Conversion-Focused
 */
 
-/* 1. Page Intro Overlay - Refined High-End Look */
-.nl-page-intro {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../assets/img/hero_contact.webp');
-    background-size: cover;
-    background-position: center;
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text-light);
-    display: flex;
-    align-items: center;
-    min-height: 400px; /* Taller hero for impact */
-}
-
-.nl-page-intro h1 {
-    font-size: var(--fs-5xl);
-    letter-spacing: -0.02em;
-    color: var(--color-text-light);
-}
-
-.nl-page-intro .nl-intro-text {
-    font-size: var(--fs-xl);
-    max-width: 60ch;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.nl-page-intro .nl-eyebrow {
-    color: var(--color-primary-light);
-}
-
-/* 2. Detailed Contact Form - Skeek Container */
-.nl-contact-form-container {
-    padding: var(--space-2xl);
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 20px 80px rgba(0,0,0,0.05); /* Premium float */
-    border-radius: var(--border-radius-lg);
+/* 1. Hero Section */
+.nl-contact-hero-cyber {
+    background-color: var(--color-bg-main);
+    padding: var(--space-4xl) 0 var(--space-xl);
     position: relative;
-    z-index: 10;
-    margin-top: -60px; /* Slight overlap with hero for modern depth */
+    overflow: hidden;
 }
 
-/* Grid System for Form */
-.nl-contact-form {
+.nl-hero-content-cyber {
+    max-width: 800px;
+}
+
+.nl-contact-hero-cyber h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-text-main);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: var(--space-sm) 0 var(--space-md);
+}
+
+.nl-contact-hero-cyber .nl-intro-text {
+    font-size: var(--fs-xl);
+    color: var(--color-text-muted);
+    max-width: 55ch;
+    line-height: 1.5;
+}
+
+/* 2. Editorial Layout (Two Columns) */
+.nl-contact-main-cyber {
+    background-color: var(--color-bg-main);
+    padding-bottom: var(--space-4xl);
+}
+
+.nl-contact-editorial-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-md) var(--space-xl);
+    gap: var(--space-4xl);
+    align-items: center; /* Center action col vertically with content */
 }
 
-/* Full Width Spans */
-.nl-form-group {
+/* Column 1: Value/Authority */
+.nl-contact-value-col {
+    padding-right: var(--space-xl);
+}
+
+.nl-editorial-title {
+    font-size: var(--fs-3xl);
+    line-height: 1.1;
+    margin: var(--space-sm) 0 var(--space-2xl);
+    color: var(--color-text-main);
+}
+
+.nl-value-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: var(--space-xl);
 }
 
-/* Specific Field Spans */
-/* Elements that should span full width */
-.nl-form-group:has(textarea),
-.nl-form-group:has(.cf-turnstile),
-.nl-form-group:last-child {
-    grid-column: 1 / -1;
+.nl-value-item {
+    display: flex;
+    gap: var(--space-lg);
 }
 
-/* Fallback for browsers without :has support - assuming order */
-.nl-form-group:nth-last-child(1), /* Button */
-.nl-form-group:nth-last-child(2), /* Turnstile */
-.nl-form-group:nth-last-child(3) /* Details Textarea */ {
-    grid-column: 1 / -1;
-}
-
-/* Label Styling - Editorial Crispness */
-.nl-form-group label {
-    font-family: var(--font-body);
-    font-size: var(--fs-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-muted);
-    transition: color var(--transition-fast);
-}
-
-.nl-form-group:focus-within label {
-    color: var(--color-primary-dark);
-}
-
-.nl-form-group .required {
+.nl-value-icon {
+    font-family: var(--font-heading);
+    font-size: var(--fs-3xl);
     color: var(--color-primary);
-    margin-left: 2px;
+    opacity: 0.2;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 60px;
 }
 
-.nl-form-group .optional {
-    font-weight: 400;
-    text-transform: none;
-    font-style: italic;
-    opacity: 0.6;
-    margin-left: 4px;
-    font-size: 0.9em;
-}
-
-/* Input Styling - Modern Architectural */
-.nl-form-group input,
-.nl-form-group select,
-.nl-form-group textarea {
-    padding: 1rem 1.25rem;
-    font-family: var(--font-body);
-    font-size: var(--fs-base);
+.nl-value-content h3 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-xs);
     color: var(--color-text-main);
+}
+
+.nl-value-content p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: var(--fs-base);
+}
+
+/* 3. Local Booking Card (Human-Centric) */
+.nl-local-booking-card {
+    background-color: var(--color-bg-alt);
     border: 1px solid var(--color-border);
-    background-color: #fafafa; /* Very subtle off-white */
-    border-radius: var(--border-radius);
-    transition: all var(--transition-fast);
-    width: 100%;
+    border-radius: 12px;
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
 }
 
-.nl-form-group textarea {
-    resize: vertical;
-    min-height: 150px;
+.nl-location-tag {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
 }
 
-.nl-form-group input:hover,
-.nl-form-group select:hover,
-.nl-form-group textarea:hover {
-    background-color: #fff;
-    border-color: rgba(0,0,0,0.1);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+.nl-card-title {
+    font-size: var(--fs-2xl);
+    color: var(--color-text-main);
+    margin-bottom: var(--space-sm);
 }
 
-.nl-form-group input:focus,
-.nl-form-group select:focus,
-.nl-form-group textarea:focus {
-    outline: none;
-    background-color: #fff;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(36, 194, 94, 0.1); /* Brand glow */
+.nl-card-note {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
 }
 
-/* Button Alignment */
-.nl-form-group button[type="submit"] {
-    width: 100%; /* Full width for impact */
-    padding: 1.25rem;
+/* Meta Info (Duration/Format) */
+.nl-booking-meta {
+    display: flex;
+    gap: var(--space-xl);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-xl);
+}
+
+.nl-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nl-meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    font-weight: 700;
+}
+
+.nl-meta-value {
     font-size: var(--fs-sm);
-    letter-spacing: 0.15em;
-    margin-top: var(--space-sm);
+    color: var(--color-text-main);
+    font-weight: 600;
 }
 
-/* Feedback Message */
-.nl-form-feedback {
-    grid-column: 1 / -1;
-    margin-top: var(--space-md);
-    padding: var(--space-md);
-    background-color: rgba(36, 194, 94, 0.05);
-    border-left: 2px solid var(--color-primary);
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    display: none;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity var(--transition-standard), transform var(--transition-standard);
+.nl-booking-btn-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
 }
 
-.nl-form-feedback.is-visible {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
+.nl-simple-note {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+}
+
+/* 3. FAQ Section (Light) */
+.nl-faq-cyber {
+    background-color: var(--color-bg-alt);
+    padding: var(--space-4xl) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-faq-title-cyber {
+    color: var(--color-text-main);
+    font-size: var(--fs-3xl);
+}
+
+.nl-faq-grid-cyber {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nl-faq-item-cyber {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+}
+
+.nl-faq-question-cyber {
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--fs-xl);
+    color: var(--color-text-main);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nl-faq-question-cyber::after {
+    content: '+';
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.nl-faq-answer-cyber {
+    padding-top: var(--space-md);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 65ch;
 }
 
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .nl-contact-editorial-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-3xl);
+    }
+    .nl-contact-value-col {
+        padding-right: 0;
+    }
+}
+
 @media (max-width: 768px) {
-    .nl-contact-form-container {
-        padding: var(--space-xl) var(--space-lg);
-        margin-top: -40px;
+    .nl-contact-hero-cyber h1 {
+        font-size: 2.5rem;
     }
-    
-    .nl-contact-form {
-        grid-template-columns: 1fr; /* Stack on mobile */
-        gap: var(--space-md);
-    }
-
-    .nl-page-intro {
-        min-height: auto;
-        padding-bottom: var(--space-3xl); /* Space for overlap */
-    }
-
-    .nl-page-intro h1 {
-        font-size: var(--fs-3xl);
+    .nl-editorial-title {
+        font-size: var(--fs-2xl);
     }
 }

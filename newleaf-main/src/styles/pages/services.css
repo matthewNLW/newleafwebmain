@@ -103,9 +103,10 @@
 }
 
 .nl-service-item.is-active .nl-service-body {
-    max-height: 600px; /* Large enough to avoid clipping but small enough for transition */
+    max-height: 2000px; /* Increased to prevent content cut-off */
     opacity: 1;
     padding-top: var(--space-lg);
+    padding-bottom: var(--space-xl);
 }
 
 .nl-service-body-content {
@@ -151,6 +152,19 @@
 .nl-included-list li {
     font-size: var(--fs-sm);
     color: var(--color-text-muted);
+}
+
+.nl-service-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+}
+
+@media (max-width: 600px) {
+    .nl-service-details-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
 }
 
 

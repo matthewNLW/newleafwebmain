@@ -218,6 +218,7 @@ p:last-child {
     /* Ensure hero clears the fixed header (80px) */
     .nl-main > .nl-section:first-child,
     .nl-page-intro,
+    .nl-contact-hero-cyber,
     .nl-home-hero {
         padding-top: calc(80px + var(--space-xl));
     }
@@ -257,7 +258,7 @@ p:last-child {
 
 .nl-footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
     gap: var(--space-xl);
     margin-bottom: var(--space-3xl);
 }
@@ -300,6 +301,18 @@ p:last-child {
 .nl-footer-legal {
     display: flex;
     gap: var(--space-lg);
+}
+
+.nl-ghost-link {
+    color: var(--color-text-muted);
+    opacity: 0.3;
+    font-size: 10px;
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+}
+
+.nl-ghost-link:hover {
+    opacity: 0.8;
 }
 
 @media (max-width: 900px) {
@@ -483,26 +496,30 @@ p:last-child {
     width: 100%;
 }
 
+/* Header Light Logic - For dark backgrounds (e.g. Hero sections) */
+.nl-header.header-light .nl-nav-link,
+.nl-header.header-light .nl-logo {
+    color: var(--color-text-light);
+}
+
+.nl-header.header-light .nl-mobile-toggle span {
+    background-color: var(--color-text-light);
+}
+
+/* Scrolled/Non-scrolled state transitions */
+.nl-header.header-light.is-scrolled .nl-nav-link,
+.nl-header.header-light.is-scrolled .nl-logo {
+    color: var(--color-text-main);
+}
+
+.nl-header.header-light.is-scrolled .nl-mobile-toggle span {
+    background-color: var(--color-text-main);
+}
+
 /* Handle Dark Hero Collision */
-/* Handle Dark Hero Collision - DESKTOP ONLY */
+/* Handle Dark Hero Collision - Clean up old media-query limited logic */
 @media (min-width: 769px) {
-    .nl-header.header-light .nl-nav-link,
-    .nl-header.header-light .nl-logo {
-        color: var(--color-text-light);
-    }
-
-    .nl-header.header-light .nl-mobile-toggle span {
-        background-color: var(--color-text-light);
-    }
-
-    .nl-header.header-light.is-scrolled .nl-nav-link,
-    .nl-header.header-light.is-scrolled .nl-logo {
-        color: var(--color-text-main);
-    }
-
-    .nl-header.header-light.is-scrolled .nl-mobile-toggle span {
-        background-color: var(--color-text-main);
-    }
+    /* (The specific overrides are now handled by the global header-light classes above) */
 }
 
 

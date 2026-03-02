@@ -1,3 +1,10 @@
+// Static security rules moved outside handler for performance
+const SENSITIVE_EXTENSIONS = [".php", ".env", ".git", ".sql", ".bak", ".config", ".ini", ".sh"];
+const AGGRESSIVE_BOTS = [
+  "semrushbot", "ahrefsbot", "dotbot", "mj12bot", "petalbot", "bytespider", "liebaofast",
+  "gptbot", "ccbot", "claudebot", "anthropic-ai"
+];
+
 export default async (request, context) => {
   const url = new URL(request.url);
   const path = url.pathname.toLowerCase();
@@ -5,18 +12,13 @@ export default async (request, context) => {
   const clientIp = request.headers.get("x-nf-client-connection-ip");
 
   // 1. Block sensitive file extensions (Basic WAF)
-  const sensitiveExtensions = [".php", ".env", ".git", ".sql", ".bak", ".config", ".ini", ".sh"];
-  if (sensitiveExtensions.some(ext => path.endsWith(ext))) {
+  if (SENSITIVE_EXTENSIONS.some(ext => path.endsWith(ext))) {
     return new Response("Forbidden Access", { status: 403 });
   }
 
   // 2. Block aggressive bots & scrapers (Enhanced)
   // This helps reduce load and "rate limits" bad actors by denying them upfront.
-  const aggressiveBots = [
-    "semrushbot", "ahrefsbot", "dotbot", "mj12bot", "petalbot", "bytespider", "liebaofast",
-    "gptbot", "ccbot", "claudebot", "anthropic-ai"
-  ];
-  if (aggressiveBots.some(bot => userAgent.includes(bot))) {
+  if (AGGRESSIVE_BOTS.some(bot => userAgent.includes(bot))) {
     return new Response("Access Denied: Automated traffic not permitted.", { status: 403 });
   }
 

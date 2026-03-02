@@ -25,9 +25,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"></noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles/bundle.css?v=60">
@@ -136,7 +135,7 @@
                 <div class="nl-grid-split">
                     <div class="nl-regional-visual">
                         <img src="assets/img/pawleys-island-beaches.webp" alt="Pawleys Island coastal dunes and beach"
-                            class="nl-regional-img">
+                            class="nl-regional-img" loading="lazy" width="750" height="499">
                     </div>
                     <article class="nl-stack">
                         <span class="nl-eyebrow">Local Roots</span>

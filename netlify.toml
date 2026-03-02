@@ -1,0 +1,109 @@
+[build]
+  publish = "src"
+
+[[edge_functions]]
+  path = "/*"
+  function = "security"
+
+[[edge_functions]]
+  path = "/lead"
+  function = "lead"
+
+
+
+# 1. Page Rewrites (SPA-like or pretty URLs)
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/work"
+  to = "/work.html"
+  status = 200
+
+[[redirects]]
+  from = "/process"
+  to = "/process.html"
+  status = 200
+
+[[redirects]]
+  from = "/explore"
+  to = "/explore.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/thanks"
+  to = "/thanks.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/web-developer-pawleys-island-sc"
+  to = "/pawleys-island-web-developer.html"
+  status = 200
+
+# Fallback for direct HTML access if needed, or 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# 2. Security & Caching Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+#    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms https://c.bing.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.clarity.ms https://*.clarity.ms https://c.bing.com; connect-src 'self' https://challenges.cloudflare.com https://www.clarity.ms https://*.clarity.ms https://c.bing.com https://k.clarity.ms; frame-src 'self' https://challenges.cloudflare.com;"
+
+# Cache immutable assets (images, styles, scripts) for 1 year
+# Cache immutable assets (images, styles, scripts)
+# CHANGED to max-age=0 to fix update issues. 
+# In a production build with hashed filenames (e.g. style.123.css), we would use 1 year.
+# But since we have static filenames, we must force revalidation.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ASSETS: Cache for 1 year. 
+# IMPORTANT: If you change these files, you MUST bump the ?v= number in the HTML files 
+# to force visitors to download the new version (e.g., change ?v=10 to ?v=11).
+[[headers]]
+  for = "/styles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/scripts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Don't cache HTML files to ensure updates go live immediately
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

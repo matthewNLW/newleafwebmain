@@ -1,0 +1,233 @@
+/* 
+   Contact Page - High-Authority Editorial Layout
+   Discipline: Balanced, Informative, Conversion-Focused
+*/
+
+/* 1. Hero Section */
+.nl-contact-hero-cyber {
+    background-color: var(--color-bg-main);
+    padding: var(--space-4xl) 0 var(--space-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.nl-hero-content-cyber {
+    max-width: 800px;
+}
+
+.nl-contact-hero-cyber h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-text-main);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: var(--space-sm) 0 var(--space-md);
+}
+
+.nl-contact-hero-cyber .nl-intro-text {
+    font-size: var(--fs-xl);
+    color: var(--color-text-muted);
+    max-width: 55ch;
+    line-height: 1.5;
+}
+
+/* 2. Editorial Layout (Two Columns) */
+.nl-contact-main-cyber {
+    background-color: var(--color-bg-main);
+    padding-bottom: var(--space-4xl);
+}
+
+.nl-contact-editorial-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center; /* Center action col vertically with content */
+}
+
+/* Column 1: Value/Authority */
+.nl-contact-value-col {
+    padding-right: var(--space-xl);
+}
+
+.nl-editorial-title {
+    font-size: var(--fs-3xl);
+    line-height: 1.1;
+    margin: var(--space-sm) 0 var(--space-2xl);
+    color: var(--color-text-main);
+}
+
+.nl-value-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.nl-value-item {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.nl-value-icon {
+    font-family: var(--font-heading);
+    font-size: var(--fs-3xl);
+    color: var(--color-primary);
+    opacity: 0.2;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 60px;
+}
+
+.nl-value-content h3 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-main);
+}
+
+.nl-value-content p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: var(--fs-base);
+}
+
+/* 3. Local Booking Card (Human-Centric) */
+.nl-local-booking-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+.nl-location-tag {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.nl-card-title {
+    font-size: var(--fs-2xl);
+    color: var(--color-text-main);
+    margin-bottom: var(--space-sm);
+}
+
+.nl-card-note {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+}
+
+/* Meta Info (Duration/Format) */
+.nl-booking-meta {
+    display: flex;
+    gap: var(--space-xl);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-xl);
+}
+
+.nl-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nl-meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    font-weight: 700;
+}
+
+.nl-meta-value {
+    font-size: var(--fs-sm);
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+.nl-booking-btn-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.nl-simple-note {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+}
+
+/* 3. FAQ Section (Light) */
+.nl-faq-cyber {
+    background-color: var(--color-bg-alt);
+    padding: var(--space-4xl) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-faq-title-cyber {
+    color: var(--color-text-main);
+    font-size: var(--fs-3xl);
+}
+
+.nl-faq-grid-cyber {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nl-faq-item-cyber {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+}
+
+.nl-faq-question-cyber {
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--fs-xl);
+    color: var(--color-text-main);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nl-faq-question-cyber::after {
+    content: '+';
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.nl-faq-answer-cyber {
+    padding-top: var(--space-md);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 65ch;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .nl-contact-editorial-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-3xl);
+    }
+    .nl-contact-value-col {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-contact-hero-cyber h1 {
+        font-size: 2.5rem;
+    }
+    .nl-editorial-title {
+        font-size: var(--fs-2xl);
+    }
+}

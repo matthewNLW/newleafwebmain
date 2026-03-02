@@ -1,0 +1,41 @@
+﻿Connecting to Notion Database: b3fad7118e7c49eca930d7d5e2f8664f...
+
+Γ£à SUCCESS: Connected to Database!
+Database Name: Deals
+
+=== COLUMN SCHEMA (Expected vs Actual) ===
+Your Code expects: Name, Email, Company, Service, Budget, Phone
+ACTUAL COLUMNS FOUND:
+- "Notes" (rich_text)
+- "Sales Rep Email" (email)
+- "Deal Status" (select)
+   Options: [New (Form Submitted), Not Qualified, Invoice Sent, First Payment, In Build, Review / Revisions, Delivered, Closed / Lost, Refunded / Disputed, Last Payment, Quote Sent]
+- "Sales Rep Name" (rich_text)
+- "Timeline" (select)
+   Options: [ASAP, 1ΓÇô2 weeks, 3ΓÇô4 weeks, Flexible, 1-2 weeks, 3-4weeks]
+- "Build Start Date" (date)
+- "Commission Paid" (checkbox)
+- "Commission Eligible" (checkbox)
+- "Project Board Link" (url)
+- "Budget Range" (select)
+   Options: [$1kΓÇô$2.5k, $2.5kΓÇô$5k, $5k+, Not sure, $2 500 - $5 000, $5000+, 1000-2500, 2500-5000]
+- "Client Name" (rich_text)
+- "Deal Value ($)" (number)
+- "Client Email" (email)
+- "Payout Date" (date)
+- "Website Type" (select)
+   Options: [Service, Ecommerce, Booking, Portfolio, Other, Business / Service Website, business]
+- "Commission Amount" (formula)
+- "Deal ID" (unique_id)
+- "Client Phone" (phone_number)
+- "Payment Status" (select)
+   Options: [Unpaid, Paid, Refunded]
+- "Lead Source" (select)
+   Options: [Cold Email, DM, Referral, Inbound]
+- "Stripe Invoice Link" (url)
+- "Commission Rate" (number)
+- "Target Launch Date" (date)
+- "Business Name" (rich_text)
+- "Name" (title)
+
+If these don't match exactly (case-sensitive), the form will fail.

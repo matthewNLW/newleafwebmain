@@ -1,0 +1,499 @@
+/* 
+   Work Page Styles - New Leaf
+   Focus: Flowing Deck, Sticky Interaction, Immersive Scroll
+*/
+
+/* 1. Work Intro & Filter UI */
+.nl-work-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/verdant.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-work-intro h1,
+.nl-work-intro .nl-intro-text,
+.nl-work-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+.work-hero-reveal {
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+.work-hero-reveal.is-revealed {
+    opacity: 1;
+}
+
+.nl-work-filter {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.nl-filter-btn {
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.7); 
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.nl-filter-btn:hover,
+.nl-filter-btn.is-active {
+    color: var(--color-text-light);
+    border-bottom-color: var(--color-text-light);
+}
+
+/* 2. The Flowing Deck (Sticky Stack) */
+.nl-deck-container {
+    position: relative;
+    padding-bottom: 10vh; /* Space at end */
+}
+
+.nl-deck-card {
+    position: sticky;
+    top: 120px; /* Default sticky top (below header) */
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-2xl); /* Space between cards in flow */
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.05); /* Suggest depth upwards */
+    height: 600px; /* Fixed height for consistent stacking */
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    transform-origin: center top;
+    transition: transform 0.1s linear; /* Smooth micro-interactions if needed */
+}
+
+/* Staggered Tops for Stacking Effect based on index provided in HTML or simple nth-child */
+.nl-deck-card:nth-child(1) { top: 100px; }
+.nl-deck-card:nth-child(2) { top: 120px; }
+.nl-deck-card:nth-child(3) { top: 140px; }
+.nl-deck-card:nth-child(4) { top: 160px; }
+.nl-deck-card:nth-child(5) { top: 180px; }
+.nl-deck-card:nth-child(6) { top: 200px; }
+.nl-deck-card:nth-child(7) { top: 220px; }
+
+/* In case of more items, they just stack at 200px or loop styles via JS, but CSS covers most cases */
+
+.nl-deck-media {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid var(--color-border);
+    /* For Overlay Button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Redesigned Overlay Button */
+.nl-case-overlay-btn {
+    position: absolute;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-standard);
+    
+    /* Readable High-Contrast Style */
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 100px; /* Capsule shape */
+    
+    /* Typography */
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nl-case-overlay-btn::after {
+    content: '→';
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.nl-case-overlay-btn:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    transform: translateY(0) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.nl-case-overlay-btn:hover::after {
+    transform: translateX(4px);
+}
+
+.nl-deck-card:hover .nl-case-overlay-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nl-deck-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Darker overlay for better text readability */
+    background: rgba(0, 0, 0, 0.4); 
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+    backdrop-filter: blur(2px); /* Slight blur helps text pop */
+}
+
+.nl-deck-card:hover .nl-deck-media::after {
+    opacity: 1;
+}
+
+/* Critical Fix: Reset transform context for fixed modal */
+/* Case Study Reading Mode State */
+.nl-deck-card.is-reading {
+    position: static !important; /* CRITICAL: Static position releases the fixed child from the card's stacking context */
+    height: auto !important; 
+    min-height: 80vh; 
+    grid-template-columns: 1fr; 
+    overflow: visible !important;
+    z-index: 1000 !important;
+    margin-bottom: var(--space-3xl);
+    transform: none !important;
+    transition: none !important;
+}
+
+.nl-deck-card.is-reading .nl-deck-media,
+.nl-deck-card.is-reading .nl-deck-content {
+    display: none !important; /* Hide summary view when reading */
+}
+
+
+.nl-deck-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.nl-deck-card:hover .nl-deck-img {
+    transform: scale(1.03);
+}
+
+.nl-deck-content {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nl-deck-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nl-deck-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-4xl);
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.nl-deck-desc {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+    max-width: 45ch;
+}
+
+.nl-demo-disclaimer {
+    display: block;
+    font-size: var(--fs-xs);
+    font-style: italic;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+    margin-top: calc(var(--space-md) * -1); /* Pull up closer to description */
+    margin-bottom: var(--space-lg);
+    max-width: 45ch;
+}
+
+.nl-view-case {
+    align-self: flex-start;
+}
+
+.nl-card-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-top: auto; /* Push to bottom if content is short, though justify-content:center is set on parent */
+    align-self: flex-start;
+}
+
+/* Responsive: Disable sticky on mobile for better usability */
+@media (max-width: 1100px) {
+    .nl-deck-card {
+        height: auto;
+        min-height: 500px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 1fr;
+    }
+    
+    .nl-deck-media {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-deck-card {
+        position: relative; /* Unlock sticky */
+        top: auto !important; /* Reset staggered tops */
+        margin-bottom: var(--space-xl);
+        grid-template-rows: 250px auto;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .nl-deck-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .nl-deck-content {
+        padding: var(--space-lg);
+    }
+}
+
+/* --- Case Study Reading Mode --- */
+
+.nl-case-study-view {
+    position: fixed; /* Take over the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg-alt); 
+    z-index: 10000; /* Above everything including header */
+    display: none; /* Hide by default */
+    flex-direction: column;
+    touch-action: manipulation;
+}
+
+.nl-deck-card.is-reading .nl-case-study-view {
+    display: flex; /* Show when reading */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.nl-close-case-btn {
+    position: fixed; /* Pinned to viewport */
+    top: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-alt);
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    z-index: 10100;
+    transition: all var(--transition-fast);
+    touch-action: manipulation;
+}
+
+.nl-close-case-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+    transform: rotate(90deg);
+}
+
+.nl-case-scroll {
+    overflow-y: auto;
+    height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+    padding: var(--space-5xl) var(--space-xl); /* Generous top padding */
+}
+
+.nl-case-body {
+    max-width: 65ch;
+    margin: 0 auto;
+}
+
+.nl-case-body h4 {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.nl-case-body h4:first-child {
+    margin-top: 0;
+}
+
+.nl-case-body p {
+    font-size: var(--fs-lg); /* Premium reading size */
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+}
+
+/* Footer & Next Button */
+.nl-case-footer {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-2xl);
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--space-4xl);
+}
+
+.nl-next-case-btn {
+    min-width: 300px;
+    padding: 1.25rem 3rem;
+    font-weight: 700;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .nl-case-scroll {
+        padding: var(--space-4xl) var(--space-lg);
+    }
+    
+    .nl-case-body p {
+        font-size: var(--fs-md);
+    }
+
+    .nl-close-case-btn {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Class to block background scrolling - applied via JS */
+body.is-reading-case {
+    overflow: hidden !important;
+}
+
+/* Hide Overlay Button when reading */
+.nl-deck-card.is-reading .nl-case-overlay-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Mobile Case Study Button - Adjusted for better spacing */
+.nl-mobile-case-btn {
+    display: none; 
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    padding: 1rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-main);
+    cursor: pointer;
+    margin-bottom: var(--space-md);
+    transition: all var(--transition-standard);
+    border-radius: var(--border-radius-sm);
+    touch-action: manipulation;
+}
+
+.nl-mobile-case-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+}
+
+@media (max-width: 1100px) {
+    .nl-mobile-case-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nl-deck-content .nl-link-arrow {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: 1px solid var(--color-border);
+        padding: 1rem 1.5rem;
+        font-family: var(--font-body);
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--color-text-main);
+        text-decoration: none;
+        margin-top: 0;
+        transition: all var(--transition-standard);
+        box-sizing: border-box;
+        border-radius: var(--border-radius-sm);
+    }
+
+    .nl-deck-content .nl-link-arrow:hover {
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+        border-color: var(--color-primary);
+    }
+    
+    .nl-deck-content .nl-link-arrow .arrow {
+        margin-left: 8px;
+    }
+
+    .nl-case-overlay-btn {
+        display: none;
+    }
+
+    /* Disable hover/touch effects on image */
+    .nl-deck-card:hover .nl-deck-media::after,
+    .nl-deck-card:active .nl-deck-media::after {
+        opacity: 0;
+    }
+
+    .nl-deck-card:hover .nl-deck-img,
+    .nl-deck-card:active .nl-deck-img {
+        transform: none;
+    }
+}

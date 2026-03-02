@@ -1,0 +1,395 @@
+/* 
+   Services Page Styles - New Leaf
+   Focus: Structured expertise, Clear inclusions, and Clarity
+*/
+
+/* 1. Page Intro */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/hero_services.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-page-intro h1,
+.nl-page-intro .nl-intro-text,
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+/* 2. Services List (Editorial Row Style) */
+.nl-services-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-xl);
+}
+
+.nl-service-item {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+    transition: var(--transition-standard);
+    cursor: pointer;
+}
+
+.nl-service-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nl-service-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.nl-service-main {
+    display: flex;
+    gap: var(--space-xl);
+    align-items: baseline;
+}
+
+.nl-service-cat {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    min-width: 2rem; /* Fixed width for alignment */
+}
+
+.nl-service-item h3 {
+    font-size: var(--fs-2xl);
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.nl-service-item:hover h3,
+.nl-service-item.is-active h3 {
+    color: var(--color-text-main);
+}
+
+.nl-service-learn {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+    transition: transform var(--transition-standard), opacity var(--transition-fast);
+}
+
+.nl-service-item:hover .nl-service-learn {
+    opacity: 1;
+    /* No translation for the plus, just opacity */
+}
+
+/* Rotate to X when active */
+.nl-service-item.is-active .nl-service-learn {
+    transform: rotate(45deg);
+    opacity: 1;
+    color: var(--color-primary); /* Highlight when open */
+}
+
+/* 2.5 Progressive Disclosure (Collapsible Body) */
+.nl-service-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-slow), opacity var(--transition-slow);
+}
+
+.nl-service-item.is-active .nl-service-body {
+    max-height: 2000px; /* Increased to prevent content cut-off */
+    opacity: 1;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-xl);
+}
+
+.nl-service-body-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 900px;
+    margin-left: calc(2rem + var(--space-xl)); /* Align with heading (cat width + gap) */
+}
+
+.nl-service-desc-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nl-service-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-md);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+}
+
+.nl-service-cta-link:hover {
+    gap: 12px;
+}
+
+/* Included List within Service Item */
+.nl-included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.nl-included-list li {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+.nl-service-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+}
+
+@media (max-width: 600px) {
+    .nl-service-details-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
+
+
+/* 4. Engagement Options */
+/* 4. Engagement Options */
+.nl-engagement-options {
+    margin-top: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    border-top: none; /* Removing container border as we'll use item borders */
+}
+
+.nl-option-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-option-col h4 {
+    font-size: var(--fs-xl);
+    margin-bottom: 0;
+    color: var(--color-text-main);
+}
+
+.nl-option-col p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .nl-services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .nl-service-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .nl-service-main {
+        flex-direction: column;
+        gap: var(--space-xs);
+        width: 100%;
+    }
+
+    .nl-service-item h3 {
+        font-size: var(--fs-xl);
+    }
+
+    .nl-service-learn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nl-service-item {
+        position: relative;
+        padding: var(--space-lg) 0;
+    }
+
+    .nl-service-body-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        margin-left: 0;
+        max-width: none;
+    }
+
+    .nl-included-list {
+        grid-template-columns: 1fr;
+    }
+
+    .nl-engagement-options {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .nl-option-col h4 {
+        font-size: var(--fs-lg);
+    }
+}
+
+/* Interventions & Engagement Section (List Style) */
+.nl-interventions {
+    background-color: transparent;
+    border: none;
+    margin-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+}
+
+.nl-engagement-models {
+    background-color: transparent;
+    border: none;
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+}
+
+.nl-intervention-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-xl);
+}
+
+.nl-intervention-card {
+    display: grid;
+    grid-template-columns: 2rem 1.5fr 2fr 1fr; /* Cat | Title+Tag | Desc | CTA */
+    gap: var(--space-xl);
+    align-items: baseline;
+    padding: var(--space-3xl) 0;
+    margin-bottom: var(--space-3xl);
+    border-top: 1px solid var(--color-border);
+    background: transparent;
+    transition: background-color var(--transition-fast);
+}
+
+.nl-intervention-card:last-child {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0;
+}
+
+.nl-intervention-card:hover {
+    background-color: transparent;
+    border-color: var(--color-text);
+}
+
+/* 1. Header Area (Title + Tag) */
+.nl-intervention-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin-bottom: 0;
+}
+
+.nl-intervention-head h3 {
+    font-size: var(--fs-xl); /* Match main list size */
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.nl-scope-tag {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    white-space: nowrap;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* 2. Description Area */
+.nl-intervention-card p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 50ch;
+}
+
+/* 3. Footer/CTA Area */
+.nl-intervention-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Right align CTA */
+    gap: var(--space-2xs);
+    padding-top: 0;
+    padding-bottom: var(--space-xl);
+    border-top: none;
+    text-align: right;
+}
+
+.nl-outcome-label {
+    font-size: 0.7rem; /* Tiny label */
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+}
+
+.nl-text-link {
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nl-text-link:hover {
+    color: var(--color-accent);
+}
+
+/* Numbering Column (Pseudo-element or explicit) */
+/* Note: We will use the scope tag as the 'meta' column or add an explicit counter if needed. 
+   For now, the grid column '2rem' acts as the gutter/number space similar to the main list. 
+   We will rely on the HTML structure adjusting slightly to put something in that first col if needed, 
+   or leave it valid empty space for alignment. 
+*/
+
+@media (max-width: 900px) {
+    .nl-intervention-card {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .nl-intervention-footer {
+        align-items: flex-start;
+        text-align: left;
+        margin-top: var(--space-sm);
+    }
+}

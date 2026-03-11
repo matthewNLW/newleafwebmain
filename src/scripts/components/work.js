@@ -1,12 +1,10 @@
-
 /**
  * Work Page Interactions
  * Handles the "Reading Mode" state for case study cards.
  */
 
 export function initWorkInteractions() {
-    console.log('Work interactions initializing v40...');
-    const cards = document.querySelectorAll('.nl-deck-card');
+    const cards = Array.from(document.querySelectorAll('.nl-deck-card'));
     const viewButtons = document.querySelectorAll('.nl-case-overlay-btn, .nl-mobile-case-btn');
     const closeButtons = document.querySelectorAll('.nl-close-case-btn');
     const nextButtons = document.querySelectorAll('.nl-next-case-btn');
@@ -16,40 +14,23 @@ export function initWorkInteractions() {
         return;
     }
 
-    console.log(`Found ${viewButtons.length} case study buttons.`);
-
-    // Specialized touch diagnostic
-    viewButtons.forEach(btn => {
-        btn.addEventListener('touchstart', () => {
-             console.log('Mobile TouchStart detected on button:', btn.textContent);
-        }, { passive: true });
-    });
-
     function openCase(card) {
         if (!card) {
             console.error('Work Interaction Error: Could not find card to open.');
             return;
         }
-        const title = card.querySelector('.nl-deck-title')?.textContent;
-        console.log('--- Case Study Triggered ---');
-        console.log('Project:', title);
         
         // Lock body scroll
         document.body.classList.add('is-reading-case');
-        console.log('Body class added: is-reading-case');
         
         // Reset internal scroll position
         const scrollContainer = card.querySelector('.nl-case-scroll');
         if (scrollContainer) {
             scrollContainer.scrollTop = 0;
-            console.log('Scroll position reset.');
         }
         
         card.classList.add('is-reading');
-        console.log('Card class added: is-reading');
-        console.log('---------------------------');
     }
-
 
     function closeCase(card) {
         if (!card) return;
@@ -86,7 +67,7 @@ export function initWorkInteractions() {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const currentCard = btn.closest('.nl-deck-card');
-            const currentIndex = Array.from(cards).indexOf(currentCard);
+            const currentIndex = cards.indexOf(currentCard);
             const nextCard = cards[currentIndex + 1];
 
             if (nextCard) {
@@ -104,6 +85,3 @@ export function initWorkInteractions() {
         });
     });
 }
-
-
-

@@ -67,10 +67,11 @@ export const initContactForm = () => {
     const form = document.querySelector('.nl-contact-form');
     if (!form) return;
 
+    const btn = form.querySelector('button');
+    const feedback = document.querySelector('.nl-form-feedback');
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const btn = form.querySelector('button');
-        const feedback = document.querySelector('.nl-form-feedback');
 
         const originalText = btn.textContent;
         btn.textContent = 'Sending...';

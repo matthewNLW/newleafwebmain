@@ -49,9 +49,17 @@ export function initNav() {
     });
 
     // Handle Scroll State (Header Sticky Background)
+    let isTicking = false;
+
     const handleScroll = () => {
-        const scrolled = window.scrollY > 50;
-        header.classList.toggle('is-scrolled', scrolled);
+        if (!isTicking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.scrollY > 50;
+                header.classList.toggle('is-scrolled', scrolled);
+                isTicking = false;
+            });
+            isTicking = true;
+        }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

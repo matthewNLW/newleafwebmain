@@ -1150,112 +1150,58 @@ p:last-child {
     background-color: var(--color-bg-alt);
 }
 
-/* 6. Explore Promo (Feature Section) */
+/* 6. Explore Promo — Text-Forward Divider */
 .nl-explore-promo {
     background-color: var(--color-bg-dark);
     color: var(--color-text-light);
-    overflow: hidden;
+    padding: var(--space-3xl) 0;
     position: relative;
-    padding: 12rem 0; /* Massive vertical spacing */
+}
+
+.nl-explore-content {
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .nl-explore-promo h2,
 .nl-explore-promo p,
 .nl-explore-promo .nl-eyebrow {
     color: var(--color-text-light);
-    position: relative;
-    z-index: 2;
 }
 
 .nl-explore-promo h2 {
-    font-size: clamp(3rem, 8vw, 6rem); /* Huge, impactful typography */
-    line-height: 1;
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    line-height: 1.05;
     margin-bottom: var(--space-md);
     letter-spacing: -0.02em;
 }
 
 .nl-explore-promo p {
-    font-size: var(--fs-xl);
-    max-width: 40ch;
+    font-size: var(--fs-lg);
+    max-width: 50ch;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: var(--space-xl);
-    opacity: 0.8;
+    opacity: 0.85;
+    line-height: 1.7;
 }
 
-.nl-explore-layout {
-    align-items: center;
-    position: relative;
+.nl-explore-promo .nl-btn {
+    margin-top: var(--space-sm);
 }
 
-.nl-explore-decor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: -10%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.nl-decor-circle {
-    width: 600px;
-    height: 600px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
-    position: relative;
-    animation: pulse-glow 8s infinite alternate ease-in-out;
-}
-
-.nl-decor-circle::before {
-    content: "";
-    position: absolute;
-    inset: -40px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 50%;
-}
-
-.nl-decor-circle::after {
-    content: "";
-    position: absolute;
-    inset: 100px;
-    background: radial-gradient(circle at 50% 50%, var(--color-primary), transparent 70%);
-    opacity: 0.2;
-    filter: blur(80px);
-    border-radius: 50%;
-}
-
-@keyframes pulse-glow {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.1); opacity: 0.8; }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .nl-explore-promo {
-        padding: var(--space-3xl) 0;
-        text-align: center;
-    }
-    
-    .nl-explore-layout {
-        flex-direction: column;
+        padding: var(--space-2xl) 0;
     }
 
-    .nl-explore-decor {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        margin-top: var(--space-2xl);
-    }
-
-    .nl-decor-circle {
-        width: 300px;
-        height: 300px;
+    .nl-explore-promo h2 {
+        font-size: var(--fs-3xl);
     }
 
     .nl-explore-promo p {
-        margin-left: auto;
-        margin-right: auto;
+        font-size: var(--fs-base);
     }
 }
 

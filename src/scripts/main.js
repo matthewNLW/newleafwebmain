@@ -24,6 +24,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Analytics
     initClarity();
-
-    console.log('New Leaf digital experience initialized.');
 });

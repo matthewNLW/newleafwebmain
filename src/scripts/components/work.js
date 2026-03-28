@@ -5,7 +5,7 @@
  */
 
 export function initWorkInteractions() {
-    const cards = document.querySelectorAll('.nl-deck-card');
+    const cards = Array.from(document.querySelectorAll('.nl-deck-card'));
     const viewButtons = document.querySelectorAll('.nl-case-overlay-btn, .nl-mobile-case-btn');
     const closeButtons = document.querySelectorAll('.nl-close-case-btn');
     const nextButtons = document.querySelectorAll('.nl-next-case-btn');
@@ -69,7 +69,7 @@ export function initWorkInteractions() {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const currentCard = btn.closest('.nl-deck-card');
-            const currentIndex = Array.from(cards).indexOf(currentCard);
+            const currentIndex = cards.indexOf(currentCard);
             const nextCard = cards[currentIndex + 1];
 
             if (nextCard) {

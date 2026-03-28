@@ -30,7 +30,7 @@ export default async (request, context) => {
   }
 
   // Rate Limiting (Simple IP-based)
-  const ip = request.headers.get("CF-Connecting-IP") || request.headers.get("x-nf-client-connection-ip") || "unknown";
+  const ip = request.headers.get("x-nf-client-connection-ip") || request.headers.get("CF-Connecting-IP") || "unknown";
   const now = Date.now();
   const windowMs = 60 * 1000; // 1 minute window
   const limit = 5; // 5 requests per minute

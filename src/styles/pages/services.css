@@ -374,13 +374,6 @@
     color: var(--color-accent);
 }
 
-/* Numbering Column (Pseudo-element or explicit) */
-/* Note: We will use the scope tag as the 'meta' column or add an explicit counter if needed. 
-   For now, the grid column '2rem' acts as the gutter/number space similar to the main list. 
-   We will rely on the HTML structure adjusting slightly to put something in that first col if needed, 
-   or leave it valid empty space for alignment. 
-*/
-
 @media (max-width: 900px) {
     .nl-intervention-card {
         grid-template-columns: 1fr;

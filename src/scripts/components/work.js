@@ -11,13 +11,11 @@ export function initWorkInteractions() {
     const nextButtons = document.querySelectorAll('.nl-next-case-btn');
 
     if (viewButtons.length === 0) {
-        console.warn('Work Interaction Error: No view buttons found.');
         return;
     }
 
     function openCase(card) {
         if (!card) {
-            console.error('Work Interaction Error: Could not find card to open.');
             return;
         }
         

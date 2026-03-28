@@ -2,14 +2,10 @@
 <html lang="en">
 
 <head>
+    <script src="scripts/vendor/calendly.js" defer></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9M3X91PBQQ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-9M3X91PBQQ');
-    </script>
+    <script src="scripts/vendor/gtag.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,7 +138,7 @@
 
                             <div class="nl-booking-btn-area">
                                 <button
-                                    onclick="Calendly.initPopupWidget({url: 'https://calendly.com/matthew-newleafweb/30min'});return false;"
+                                    id="calendly-button"
                                     class="nl-btn nl-btn--primary nl-btn--full">Schedule a Call</button>
                                 <p class="nl-simple-note">This session doesn't require any commitment from you. Just
                                     honest, strategic dialogue about your goals.</p>
@@ -205,7 +201,7 @@
                 <!-- Column 1: Brand -->
                 <div class="nl-footer-col">
                     <a href="index.html" class="nl-logo">New Leaf Web Development</a>
-                    <p style="color: var(--color-text-muted); font-size: var(--fs-sm); max-width: 30ch;">
+                    <p class="util-text-muted-sm-max-30">
                         Strategic design and development built for small businesses looking to grow.
                     </p>
                 </div>
@@ -230,10 +226,8 @@
 
         <div class="nl-footer-bottom">
             <div class="nl-footer-legal">
-                <a href="privacy.html" class="nl-footer-link"
-                    style="color: var(--color-text-muted); font-size: var(--fs-xs);">Privacy Policy</a>
-                <a href="terms.html" class="nl-footer-link"
-                    style="color: var(--color-text-muted); font-size: var(--fs-xs);">Terms of Service</a>
+                <a href="privacy.html" class="nl-footer-link util-text-muted-xs">Privacy Policy</a>
+                <a href="terms.html" class="nl-footer-link util-text-muted-xs">Terms of Service</a>
 
             </div>
             <p>&copy; 2026 New Leaf Web. Made in Pawleys Island SC.</p>

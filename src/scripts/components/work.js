@@ -1,4 +1,3 @@
-
 /**
  * Work Page Interactions
  * Handles the "Reading Mode" state for case study cards.
@@ -32,7 +31,6 @@ export function initWorkInteractions() {
         
         card.classList.add('is-reading');
     }
-
 
     function closeCase(card) {
         if (!card) return;
@@ -87,6 +85,3 @@ export function initWorkInteractions() {
         });
     });
 }
-
-
-

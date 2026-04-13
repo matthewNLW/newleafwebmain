@@ -212,6 +212,54 @@
     max-width: 65ch;
 }
 
+/* Contact Form Styles */
+.nl-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.nl-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.nl-form-label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-main);
+}
+
+.nl-form-input {
+    width: 100%;
+    padding: var(--space-md);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-main);
+    font-family: inherit;
+    font-size: var(--fs-base);
+    transition: border-color 0.3s ease;
+}
+
+.nl-form-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+}
+
+.nl-form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.nl-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
     .nl-contact-editorial-layout {

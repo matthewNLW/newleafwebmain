@@ -50,7 +50,6 @@
                 <a href="services.html" class="nl-nav-link">Services</a>
                 <a href="work.html" class="nl-nav-link">Work</a>
                 <a href="process.html" class="nl-nav-link">Process</a>
-                <a href="explore.html" class="nl-nav-link">Explore</a>
                 <a href="about.html" class="nl-nav-link">About</a>
                 <a href="contact.html" class="nl-btn nl-btn--primary">Let's Talk</a>
             </nav>
@@ -73,33 +72,33 @@
         <section class="nl-section nl-contact-main-cyber">
             <div class="nl-container">
                 <div class="nl-contact-editorial-layout">
-                    <!-- Column 1: Call Goals (What we achieve together) -->
+                    <!-- Column 1: Contact Details -->
                     <div class="nl-contact-value-col reveal delay-1">
-                        <span class="nl-eyebrow">The Strategy Call</span>
-                        <h2 class="nl-editorial-title">A focused 15 minute <br>roadmap for your growth.</h2>
-                        <ul class="nl-value-list">
-                            <li class="nl-value-item">
-                                <span class="nl-value-icon">01</span>
-                                <div class="nl-value-content">
-                                    <h3>Strategic Clarity</h3>
-                                    <p>We’ll cut through the technical noise to define a clear, actionable roadmap for your website that aligns perfectly with your business goals.</p>
-                                </div>
-                            </li>
-                            <li class="nl-value-item">
-                                <span class="nl-value-icon">02</span>
-                                <div class="nl-value-content">
-                                    <h3>Budgeting Direction</h3>
-                                    <p>Get immediate clarity on pricing ranges and project phases, allowing you to plan your digital investment with confidence and no surprises.</p>
-                                </div>
-                            </li>
-                            <li class="nl-value-item">
-                                <span class="nl-value-icon">03</span>
-                                <div class="nl-value-content">
-                                    <h3>Expert Feasibility</h3>
-                                    <p>Bring your most ambitious ideas to the table. We’ll determine technical feasibility and see if our specialized approach is the right fit for your success.</p>
-                                </div>
-                            </li>
-                        </ul>
+                        <span class="nl-eyebrow">Send a Message</span>
+                        <h2 class="nl-editorial-title">Start a Conversation</h2>
+                        <p style="margin-bottom: var(--space-xl); color: var(--color-text-muted); font-size: 1.1rem; line-height: 1.6;">
+                            Prefer to write out your thoughts first? Send us a message and we'll get back to you within one business day.
+                        </p>
+                        
+                        <!-- Netlify Form Integration -->
+                        <form class="nl-contact-form" name="contact" method="POST" data-netlify="true" action="thanks.html">
+                            <div class="nl-form-group">
+                                <label for="name" class="nl-form-label">Name</label>
+                                <input type="text" id="name" name="name" class="nl-form-input" required>
+                            </div>
+
+                            <div class="nl-form-group">
+                                <label for="email" class="nl-form-label">Email</label>
+                                <input type="email" id="email" name="email" class="nl-form-input" required>
+                            </div>
+
+                            <div class="nl-form-group">
+                                <label for="message" class="nl-form-label">How can we help?</label>
+                                <textarea id="message" name="message" class="nl-form-input nl-form-textarea" required></textarea>
+                            </div>
+
+                            <button type="submit" class="nl-btn nl-btn--secondary nl-btn--full" style="margin-top: var(--space-sm);">Send Message</button>
+                        </form>
                     </div>
 
                     <!-- Column 2: The Human Action (Booking) -->
@@ -131,44 +130,7 @@
             </div>
         </section>
 
-        <section class="nl-section nl-faq-cyber">
-            <div class="nl-container">
-                <div class="nl-faq-header-cyber nl-text-center">
-                    <span class="nl-eyebrow">Assistance</span>
-                    <h2 class="nl-faq-title-cyber">Common Inquiries</h2>
-                </div>
 
-                <div class="nl-faq-grid-cyber reveal delay-3">
-                    <details class="nl-faq-item-cyber">
-                        <summary class="nl-faq-question-cyber">What happens during the initial call?</summary>
-                        <div class="nl-faq-answer-cyber">
-                            <p>We'll talk through your specific objectives and constraints. I'll give you an honest assessment of how we can help, a rough budget window, and clear milestones for moving forward.</p>
-                        </div>
-                    </details>
-
-                    <details class="nl-faq-item-cyber">
-                        <summary class="nl-faq-question-cyber">Is there a focus on small business?</summary>
-                        <div class="nl-faq-answer-cyber">
-                            <p>Yes. I specialize in bringing enterprise level technical strategy and design quality to growing businesses that need high performance tools without agency overhead.</p>
-                        </div>
-                    </details>
-
-                    <details class="nl-faq-item-cyber">
-                        <summary class="nl-faq-question-cyber">What is the typical response time?</summary>
-                        <div class="nl-faq-answer-cyber">
-                            <p>All inquiries are reviewed personally. You can expect a response within 24 to 48 business hours. Booking a call via Section 01 is the most efficient way to start.</p>
-                        </div>
-                    </details>
-
-                    <details class="nl-faq-item-cyber">
-                        <summary class="nl-faq-question-cyber">What is the typical investment?</summary>
-                        <div class="nl-faq-answer-cyber">
-                            <p>We focus on value and predictable structures. Monthly management programs start at $399, tailored projects typically range from $1,500 to $5,000, and strategic partnerships begin at $1,000 per month.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="nl-footer">
@@ -188,7 +150,6 @@
                     <a href="services.html" class="nl-footer-link">Services</a>
                     <a href="work.html" class="nl-footer-link">Work</a>
                     <a href="process.html" class="nl-footer-link">Process</a>
-                    <a href="explore.html" class="nl-footer-link">Explore</a>
                 </div>
 
                 <!-- Column 3: Company -->

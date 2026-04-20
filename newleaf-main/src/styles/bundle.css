@@ -1318,3 +1318,2267 @@ p:last-child {
         padding: 4px 10px;
     }
 }
+
+/* --- COMBINED PAGE STYLES --- */
+
+/* --- PAGE STYLE: about.css --- */
+/* 
+   About Page Styles - New Leaf
+   Focus: Narrative flow, Value propositions, and Regional identity
+*/
+
+/* 1. Page Intro */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/hero_about.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-page-intro h1,
+.nl-page-intro .nl-intro-text,
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+/* 2. Story Section (Redesign - Text Only) */
+.nl-story-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nl-story-header {
+    margin-bottom: var(--space-xl);
+}
+
+.nl-story-header h2 {
+    font-size: var(--fs-4xl); /* Large, impactful heading */
+    margin: 0;
+    line-height: 1;
+}
+
+.nl-story-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    font-family: var(--font-body); 
+    /* Slightly increased font size could work here, but base is fine for long form */
+}
+
+.nl-story-content p {
+    font-size: var(--fs-lg); /* Slightly larger for narrative */
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.nl-story-content strong {
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+/* 3. Values Grid */
+.nl-values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl) var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.nl-value-item {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-md);
+    position: relative;
+    transition: transform var(--transition-standard);
+}
+
+.nl-value-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-heading);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    color: var(--color-primary);
+    transition: transform var(--transition-fast);
+}
+
+.nl-value-item::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: calc(var(--space-md) + 12px);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.nl-value-item:hover::before,
+.nl-value-item:focus-within::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.nl-value-item:hover .nl-value-label,
+.nl-value-item:focus-within .nl-value-label {
+    transform: translateX(4px);
+}
+
+.nl-value-item p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    max-width: 35ch;
+}
+
+/* 4. Regional Focus */
+.nl-regional-focus {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nl-regional-visual {
+    height: 100%;
+    min-height: 400px; /* Ensure visibility */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.nl-regional-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive Scaling */
+@media (max-width: 992px) {
+    .nl-values-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .nl-regional-visual {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-story-layout {
+        text-align: center;
+        align-items: center;
+    }
+
+    .nl-story-header h2 {
+        font-size: var(--fs-3xl);
+    }
+
+    .nl-story-content p {
+        font-size: var(--fs-base);
+    }
+
+    .nl-value-label {
+        font-size: var(--fs-lg);
+    }
+
+    .nl-value-item p {
+        max-width: none;
+    }
+
+    .nl-value-item::before {
+        display: none; /* Hide decorative dot on mobile */
+    }
+
+    .nl-regional-visual {
+        min-height: 250px;
+        margin-bottom: var(--space-lg);
+    }
+
+    .nl-grid-split {
+        gap: var(--space-lg);
+    }
+}
+
+/* --- PAGE STYLE: contact.css --- */
+/* 
+   Contact Page - High-Authority Editorial Layout
+   Discipline: Balanced, Informative, Conversion-Focused
+*/
+
+/* 1. Hero Section */
+.nl-contact-hero-cyber {
+    background-color: var(--color-bg-main);
+    padding: var(--space-4xl) 0 var(--space-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.nl-hero-content-cyber {
+    max-width: 800px;
+}
+
+.nl-contact-hero-cyber h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-text-main);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: var(--space-sm) 0 var(--space-md);
+}
+
+.nl-contact-hero-cyber .nl-intro-text {
+    font-size: var(--fs-xl);
+    color: var(--color-text-muted);
+    max-width: 55ch;
+    line-height: 1.5;
+}
+
+/* 2. Editorial Layout (Two Columns) */
+.nl-contact-main-cyber {
+    background-color: var(--color-bg-main);
+    padding-bottom: var(--space-4xl);
+}
+
+.nl-contact-editorial-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center; /* Center action col vertically with content */
+}
+
+/* Column 1: Value/Authority */
+.nl-contact-value-col {
+    padding-right: var(--space-xl);
+}
+
+.nl-editorial-title {
+    font-size: var(--fs-3xl);
+    line-height: 1.1;
+    margin: var(--space-sm) 0 var(--space-2xl);
+    color: var(--color-text-main);
+}
+
+.nl-value-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.nl-value-item {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.nl-value-icon {
+    font-family: var(--font-heading);
+    font-size: var(--fs-3xl);
+    color: var(--color-primary);
+    opacity: 0.2;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 60px;
+}
+
+.nl-value-content h3 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-main);
+}
+
+.nl-value-content p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: var(--fs-base);
+}
+
+/* 3. Local Booking Card (Human-Centric) */
+.nl-local-booking-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+.nl-location-tag {
+    display: inline-block;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.nl-card-title {
+    font-size: var(--fs-2xl);
+    color: var(--color-text-main);
+    margin-bottom: var(--space-sm);
+}
+
+.nl-card-note {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+}
+
+/* Meta Info (Duration/Format) */
+.nl-booking-meta {
+    display: flex;
+    gap: var(--space-xl);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-xl);
+}
+
+.nl-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nl-meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    font-weight: 700;
+}
+
+.nl-meta-value {
+    font-size: var(--fs-sm);
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+.nl-booking-btn-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.nl-simple-note {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+}
+
+/* 3. FAQ Section (Light) */
+.nl-faq-cyber {
+    background-color: var(--color-bg-alt);
+    padding: var(--space-4xl) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-faq-title-cyber {
+    color: var(--color-text-main);
+    font-size: var(--fs-3xl);
+}
+
+.nl-faq-grid-cyber {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nl-faq-item-cyber {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+}
+
+.nl-faq-question-cyber {
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--fs-xl);
+    color: var(--color-text-main);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nl-faq-question-cyber::after {
+    content: '+';
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.nl-faq-answer-cyber {
+    padding-top: var(--space-md);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 65ch;
+}
+
+/* Contact Form Styles */
+.nl-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.nl-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.nl-form-label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-main);
+}
+
+.nl-form-input {
+    width: 100%;
+    padding: var(--space-md);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-main);
+    font-family: inherit;
+    font-size: var(--fs-base);
+    transition: border-color 0.3s ease;
+}
+
+.nl-form-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+}
+
+.nl-form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.nl-form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .nl-contact-editorial-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-3xl);
+    }
+    .nl-contact-value-col {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-contact-hero-cyber h1 {
+        font-size: 2.5rem;
+    }
+    .nl-editorial-title {
+        font-size: var(--fs-2xl);
+    }
+}
+
+/* --- PAGE STYLE: explore.css --- */
+/* 
+   Explore Page Styles - New Leaf
+   Focus: Editorial list, spacing-driven, minimalist hierarchy
+*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 1. Page Intro */
+.nl-explore-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-explore-intro .nl-eyebrow,
+.nl-explore-intro h1,
+.nl-explore-intro .nl-intro-text {
+    color: var(--color-text-light);
+}
+
+/* Custom Explore CTA */
+.nl-btn--explore {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.nl-btn--explore:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* 2. Theme List (Gallery Grid) */
+.nl-theme-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px; /* Gap for the border effect */
+    background-color: var(--color-border); /* Create internal borders via gap */
+    border: 1px solid var(--color-border); /* Outer border */
+}
+
+.nl-theme-item {
+    background-color: var(--color-bg-main); /* Card background */
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.nl-theme-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    height: 100%;
+}
+
+/* 3. Theme Content */
+.nl-theme-content {
+    order: 2; /* Content below visual */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.nl-theme-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.nl-theme-content h2 {
+    font-size: var(--fs-2xl);
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+.nl-theme-description {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+    flex-grow: 1; /* Push specs to bottom */
+}
+
+/* 4. Theme Details (Spec Sheet) */
+.nl-theme-details {
+    margin-top: auto; /* Pin to bottom of content area */
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: 0;
+}
+
+.nl-spec-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--fs-xs);
+}
+
+.nl-spec-item strong {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.nl-spec-item span {
+    color: var(--color-text-main);
+    font-weight: 600;
+    text-align: right;
+}
+
+/* 4b. Theme Dropdown (Feeling/Why) */
+.nl-theme-extra {
+    margin-top: var(--space-md);
+    border-top: 1px dashed var(--color-border);
+    padding-top: var(--space-sm);
+    font-size: var(--fs-xs);
+}
+
+.nl-theme-extra summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-primary);
+    list-style: none; /* Hide default arrow */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.nl-theme-extra summary::-webkit-details-marker {
+    display: none;
+}
+
+.nl-theme-extra summary::after {
+    content: '+';
+    font-weight: 400;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.nl-theme-extra[open] summary::after {
+    content: '−';
+}
+
+.nl-theme-extra summary:hover {
+    color: var(--color-primary-dark);
+}
+
+.nl-extra-content {
+    margin-top: var(--space-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.nl-extra-content p {
+    margin: 4px 0;
+}
+
+.nl-extra-content strong {
+    color: var(--color-text-main);
+} 
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 5. Removed Theme Actions */
+.nl-theme-actions {
+    display: none;
+}
+
+/* 6. Visual Signatures */
+.nl-theme-visual {
+    order: 1; /* Visual on top */
+    width: 100%;
+    margin-bottom: var(--space-md);
+}
+
+.nl-visual-signature {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16/10; /* Slightly taller for card context */
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+}
+
+/* Signatures styling remains same, mostly */
+.sig-text { font-size: 48px; }
+
+/* ... (Signature specific styles from before are kept conceptually, assuming global cascade handles them or I should re-include if I am replacing the whole block. I am replacing almost everything.) */
+
+.sig-accent {
+    position: absolute;
+    inset: 0;
+}
+
+/* Re-include sig specific logic to be safe since I'm overwriting the block */
+/* Fantasy Sig (Replaces Professional) */
+/* Fantasy Sig */
+.fantasy-sig { 
+    background: linear-gradient(135deg, #1a0f08 0%, #3e2723 50%, #d4af37 100%); 
+    border: 1px solid rgba(212, 175, 55, 0.25); 
+}
+.fantasy-sig .sig-text { 
+    font-family: 'Playfair Display', serif; 
+    color: #f5e6d3; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+} 
+.fantasy-sig .sig-accent { display: none; }
+
+/* Retro Sig */
+.retro-sig { 
+    background: linear-gradient(135deg, #111111 0%, #2a4435 50%, #b7ffcf 100%);
+    border: 1px solid rgba(183, 255, 207, .2); 
+}
+.retro-sig .sig-text { 
+    font-family: 'IBM Plex Mono', monospace; 
+    color: #ffffff; 
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+.retro-sig .sig-accent { display: none; }
+
+/* Future Sig */
+.future-sig { 
+    background: linear-gradient(135deg, #050612 0%, #1a3a5a 50%, #4fd1ff 100%);
+    border: 1px solid rgba(79, 209, 255, 0.22); 
+}
+.future-sig .sig-text { 
+    font-family: 'JetBrains Mono', monospace; 
+    color: #e9f0ff; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.future-sig .sig-accent { display: none; }
+
+/* Nature Sig */
+.nature-sig { 
+    background: linear-gradient(135deg, #1b2a22 0%, #4f6f5e 50%, #6bd18b 100%);
+    border: 1px solid #4f6f5e; 
+}
+.nature-sig .sig-text { 
+    font-family: 'Outfit', sans-serif; 
+    color: #ffffff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.nature-sig .sig-accent { display: none; }
+
+/* 7. Tags */
+/* 7. Tags */
+.nl-tag {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 100px;
+    border: 1px solid currentColor;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Theme Specific Tag Styles */
+.theme-fantasy .nl-tag {
+    color: #ae8b2d; /* Gold/Bronze */
+    background-color: rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.theme-retro .nl-tag {
+    color: #2a4435; /* Dark Green Text for contrast if light bg, or lighter if dark bg. Keep readable. */
+    color: #2a8b55; /* Adjusted for readability on white/off-white */
+    background-color: rgba(183, 255, 207, 0.25);
+    border-color: rgba(42, 139, 85, 0.3);
+}
+
+.theme-future .nl-tag {
+    color: #007bb6; /* Cyan/Blue darkened */
+    background-color: rgba(79, 209, 255, 0.1);
+    border-color: rgba(79, 209, 255, 0.4);
+}
+
+.theme-nature .nl-tag {
+    color: #3a5244; /* Deep Forest */
+    background-color: rgba(107, 209, 139, 0.15);
+    border-color: rgba(79, 111, 94, 0.3);
+}
+
+/* 8. Action/Previews Section (Lab Style) */
+.nl-action-section {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    overflow: hidden;
+    position: relative;
+    padding: 12rem 0; /* Massive vertical spacing */
+    border-top: none;
+}
+
+.nl-action-section h2,
+.nl-action-section p,
+.nl-action-section .nl-eyebrow {
+    color: var(--color-text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.nl-action-section h2 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+    font-family: var(--font-heading);
+}
+
+.nl-action-section p {
+    font-size: var(--fs-xl);
+    max-width: 40ch;
+    margin-bottom: var(--space-xl);
+    opacity: 0.8;
+}
+
+.nl-action-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    gap: var(--space-2xl);
+}
+
+.nl-action-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nl-explore-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Centered in its grid cell */
+    width: 100%;
+    height: 100%;
+}
+
+.nl-decor-circle {
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-glow 8s infinite alternate ease-in-out;
+}
+
+.nl-decor-circle::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+}
+
+.nl-decor-circle::after {
+    content: "";
+    position: absolute;
+    inset: 80px;
+    background: radial-gradient(circle at 50% 50%, var(--color-primary), transparent 70%);
+    opacity: 0.2;
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Responsive Scaling for Lab Section */
+@media (max-width: 900px) {
+    .nl-action-section {
+        padding: var(--space-3xl) 0;
+        text-align: center;
+    }
+    
+    .nl-action-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .nl-action-details {
+        align-items: center;
+    }
+
+    .nl-explore-decor {
+        margin-top: var(--space-2xl);
+    }
+
+    .nl-decor-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .nl-action-section p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 900px) {
+    .nl-theme-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .nl-theme-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-theme-item {
+        padding: var(--space-lg);
+    }
+
+    .nl-theme-content h2 {
+        font-size: var(--fs-xl);
+    }
+
+    .nl-theme-description {
+        font-size: var(--fs-sm);
+        margin-bottom: var(--space-md);
+    }
+
+    .nl-visual-signature {
+        aspect-ratio: 16/9;
+    }
+
+    .sig-text {
+        font-size: 32px;
+    }
+
+    .nl-spec-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .nl-spec-item span {
+        text-align: left;
+    }
+
+    .nl-tag {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+
+    .nl-theme-tags {
+        gap: 4px;
+    }
+
+    .nl-theme-extra {
+        font-size: 11px;
+    }
+
+    .nl-specs-grid {
+        gap: var(--space-xs);
+    }
+}
+
+/* --- PAGE STYLE: process.css --- */
+/* 
+   Process Page Styles - New Leaf
+   Focus: Editorial Flow, Sticky Navigation, and Premium Typography
+*/
+
+/* 1. Page Intro */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/img/process-hero.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-page-intro h1,
+.nl-page-intro .nl-intro-text,
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+/* 2. Process Editorial Layout */
+.nl-process-section {
+    padding: var(--space-3xl) 0;
+}
+
+.nl-process-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+}
+
+/* 3. Sticky Navigation */
+.nl-process-sidebar {
+    position: sticky;
+    top: calc(var(--header-height, 70px) + var(--space-3xl));
+    padding-right: var(--space-xl);
+}
+
+.nl-process-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.nl-process-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: all var(--transition-standard);
+    position: relative;
+    padding: var(--space-xs) 0;
+}
+
+.nl-nav-num {
+    font-size: var(--fs-xl);
+    font-weight: 300;
+    font-family: var(--font-heading);
+    opacity: 0.4;
+    transition: opacity var(--transition-standard);
+}
+
+.nl-nav-label {
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    opacity: 0.6;
+    transition: opacity var(--transition-standard);
+}
+
+/* Active State */
+.nl-process-nav-link.is-active .nl-nav-num {
+    color: var(--color-primary);
+    font-weight: 700;
+    opacity: 1;
+}
+
+.nl-process-nav-link.is-active .nl-nav-label {
+    color: var(--color-text-main);
+    font-weight: 700;
+    opacity: 1;
+}
+
+/* Vertical indicator line */
+.nl-process-nav-link::before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 0;
+    background-color: var(--color-primary);
+    transition: height var(--transition-standard);
+}
+
+.nl-process-nav-link.is-active::before {
+    height: 70%;
+}
+
+/* 4. Process Content Blocks */
+.nl-process-content {
+    display: flex;
+    flex-direction: column;
+    gap: 160px; /* Generous breathing room */
+}
+
+.nl-step-block {
+    scroll-margin-top: 150px;
+    opacity: 0.3;
+    transform: translateY(20px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+/* Optional: Animation for appearing blocks */
+.nl-step-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nl-step-eyebrow {
+    display: block;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    font-weight: 700;
+}
+
+.nl-step-headline {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-main);
+    max-width: 15ch;
+}
+
+.nl-step-description {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    max-width: 50ch;
+    line-height: 1.6;
+    margin-bottom: var(--space-3xl);
+}
+
+/* 5. Process Card (Roles & Outcome) */
+.nl-process-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-top: var(--space-xl);
+    background-color: transparent;
+    transition: box-shadow var(--transition-standard);
+}
+
+.nl-process-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.nl-process-roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.nl-role-col {
+    padding: var(--space-xl);
+}
+
+.nl-role-col:first-child {
+    border-right: 1px solid var(--color-border);
+}
+
+.nl-role-title {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+}
+
+/* Outcome Footer */
+.nl-process-outcome {
+    background-color: var(--color-bg-alt);
+    padding: var(--space-lg) var(--space-xl);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: var(--space-xl);
+    align-items: baseline;
+}
+
+.nl-outcome-label {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.nl-outcome-text {
+    font-size: var(--fs-md);
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+/* List Styling Update */
+.nl-minimal-list li {
+    padding: 6px 0;
+    border-bottom: none;
+    padding-left: 20px;
+}
+
+.nl-minimal-list li::before {
+    content: "•"; /* Dot instead of dash for this layout */
+    left: 0;
+    color: var(--color-border); /* Subtle dot */
+    font-weight: normal;
+}
+
+
+
+/* Responsive adjustment for card */
+@media (max-width: 768px) {
+    .nl-process-roles {
+        grid-template-columns: 1fr;
+    }
+    
+    .nl-role-col:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .nl-process-outcome {
+        flex-direction: column;
+        gap: var(--space-xs);
+    }
+}
+
+/* 6. Timeline & Collaboration Re-styling */
+.nl-timeline-card {
+    padding: var(--space-lg);
+    background: transparent;
+    border-left: 1px solid var(--color-border);
+    transition: border-color var(--transition-standard);
+}
+
+.nl-timeline-card:hover {
+    border-left-color: var(--color-primary);
+}
+
+.nl-collab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+}
+
+.nl-collab-item h4 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-sm);
+    width: fit-content;
+}
+
+/* 7. Responsive Adjustments */
+@media (max-width: 1024px) {
+    .nl-process-layout {
+        grid-template-columns: 200px 1fr;
+        gap: var(--space-2xl);
+    }
+    
+    .nl-step-headline {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .nl-process-layout {
+        display: block;
+    }
+
+    .nl-process-sidebar {
+        position: static;
+        margin-bottom: var(--space-2xl);
+        padding-right: 0;
+    }
+
+    .nl-process-nav-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: var(--space-sm);
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-lg);
+    }
+
+    .nl-process-nav-link {
+        white-space: nowrap;
+        padding: 0;
+    }
+
+    .nl-nav-num {
+        font-size: var(--fs-lg);
+    }
+
+    .nl-nav-label {
+        font-size: 10px;
+    }
+
+    .nl-process-nav-link::before {
+        display: none;
+    }
+
+    .nl-process-content {
+        gap: var(--space-3xl);
+    }
+
+    .nl-step-headline {
+        font-size: var(--fs-3xl);
+        max-width: none;
+    }
+
+    .nl-step-description {
+        font-size: var(--fs-base);
+        margin-bottom: var(--space-xl);
+    }
+
+    .nl-step-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+    }
+
+    .nl-partnership-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .nl-collab-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .nl-collab-item h4 {
+        font-size: var(--fs-base);
+    }
+
+    .nl-timeline-card {
+        padding: var(--space-md);
+    }
+
+    .nl-timeline-card h4 {
+        font-size: var(--fs-base);
+    }
+}
+
+@media (max-width: 600px) {
+    .nl-process-nav-list {
+        gap: var(--space-md);
+    }
+
+    .nl-step-block {
+        scroll-margin-top: 100px;
+    }
+
+    .nl-role-col {
+        padding: var(--space-lg);
+    }
+
+    .nl-role-title {
+        font-size: 10px;
+    }
+
+    .nl-minimal-list li {
+        font-size: var(--fs-sm);
+        padding: 4px 0;
+    }
+
+    .nl-process-outcome {
+        padding: var(--space-md);
+    }
+
+    .nl-outcome-label {
+        font-size: 10px;
+    }
+
+    .nl-outcome-text {
+        font-size: var(--fs-sm);
+    }
+}
+
+
+/* --- PAGE STYLE: services.css --- */
+/* 
+   Services Page Styles - New Leaf
+   Focus: Structured expertise, Clear inclusions, and Clarity
+*/
+
+/* 1. Page Intro */
+.nl-page-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/hero_services.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-page-intro h1,
+.nl-page-intro .nl-intro-text,
+.nl-page-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+/* 2. Services List (Editorial Row Style) */
+.nl-services-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-xl);
+}
+
+.nl-service-item {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+    transition: var(--transition-standard);
+    cursor: pointer;
+}
+
+.nl-service-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nl-service-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.nl-service-main {
+    display: flex;
+    gap: var(--space-xl);
+    align-items: baseline;
+}
+
+.nl-service-cat {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    min-width: 2rem; /* Fixed width for alignment */
+}
+
+.nl-service-item h3 {
+    font-size: var(--fs-2xl);
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.nl-service-item:hover h3,
+.nl-service-item.is-active h3 {
+    color: var(--color-text-main);
+}
+
+.nl-service-learn {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+    transition: transform var(--transition-standard), opacity var(--transition-fast);
+}
+
+.nl-service-item:hover .nl-service-learn {
+    opacity: 1;
+    /* No translation for the plus, just opacity */
+}
+
+/* Rotate to X when active */
+.nl-service-item.is-active .nl-service-learn {
+    transform: rotate(45deg);
+    opacity: 1;
+    color: var(--color-primary); /* Highlight when open */
+}
+
+/* 2.5 Progressive Disclosure (Collapsible Body) */
+.nl-service-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-slow), opacity var(--transition-slow);
+}
+
+.nl-service-item.is-active .nl-service-body {
+    max-height: 2000px; /* Increased to prevent content cut-off */
+    opacity: 1;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-xl);
+}
+
+.nl-service-body-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 900px;
+    margin-left: calc(2rem + var(--space-xl)); /* Align with heading (cat width + gap) */
+}
+
+.nl-service-desc-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nl-service-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-md);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+}
+
+.nl-service-cta-link:hover {
+    gap: 12px;
+}
+
+/* Included List within Service Item */
+.nl-included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.nl-included-list li {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+.nl-service-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+}
+
+@media (max-width: 600px) {
+    .nl-service-details-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
+
+
+/* 4. Engagement Options */
+/* 4. Engagement Options */
+.nl-engagement-options {
+    margin-top: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    border-top: none; /* Removing container border as we'll use item borders */
+}
+
+.nl-option-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.nl-option-col h4 {
+    font-size: var(--fs-xl);
+    margin-bottom: 0;
+    color: var(--color-text-main);
+}
+
+.nl-option-col p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .nl-services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .nl-service-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .nl-service-main {
+        flex-direction: column;
+        gap: var(--space-xs);
+        width: 100%;
+    }
+
+    .nl-service-item h3 {
+        font-size: var(--fs-xl);
+    }
+
+    .nl-service-learn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nl-service-item {
+        position: relative;
+        padding: var(--space-lg) 0;
+    }
+
+    .nl-service-body-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        margin-left: 0;
+        max-width: none;
+    }
+
+    .nl-included-list {
+        grid-template-columns: 1fr;
+    }
+
+    .nl-engagement-options {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .nl-option-col h4 {
+        font-size: var(--fs-lg);
+    }
+}
+
+/* Interventions & Engagement Section (List Style) */
+.nl-interventions {
+    background-color: transparent;
+    border: none;
+    margin-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+}
+
+.nl-engagement-models {
+    background-color: transparent;
+    border: none;
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+}
+
+.nl-intervention-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-xl);
+}
+
+.nl-intervention-card {
+    display: grid;
+    grid-template-columns: 2rem 1.5fr 2fr 1fr; /* Cat | Title+Tag | Desc | CTA */
+    gap: var(--space-xl);
+    align-items: baseline;
+    padding: var(--space-3xl) 0;
+    margin-bottom: var(--space-3xl);
+    border-top: 1px solid var(--color-border);
+    background: transparent;
+    transition: background-color var(--transition-fast);
+}
+
+.nl-intervention-card:last-child {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0;
+}
+
+.nl-intervention-card:hover {
+    background-color: transparent;
+    border-color: var(--color-text);
+}
+
+/* 1. Header Area (Title + Tag) */
+.nl-intervention-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin-bottom: 0;
+}
+
+.nl-intervention-head h3 {
+    font-size: var(--fs-xl); /* Match main list size */
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.nl-scope-tag {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    white-space: nowrap;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* 2. Description Area */
+.nl-intervention-card p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 50ch;
+}
+
+/* 3. Footer/CTA Area */
+.nl-intervention-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Right align CTA */
+    gap: var(--space-2xs);
+    padding-top: 0;
+    padding-bottom: var(--space-xl);
+    border-top: none;
+    text-align: right;
+}
+
+.nl-outcome-label {
+    font-size: 0.7rem; /* Tiny label */
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+}
+
+.nl-text-link {
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nl-text-link:hover {
+    color: var(--color-accent);
+}
+
+/* Numbering Column (Pseudo-element or explicit) */
+/* Note: We will use the scope tag as the 'meta' column or add an explicit counter if needed. 
+   For now, the grid column '2rem' acts as the gutter/number space similar to the main list. 
+   We will rely on the HTML structure adjusting slightly to put something in that first col if needed, 
+   or leave it valid empty space for alignment. 
+*/
+
+@media (max-width: 900px) {
+    .nl-intervention-card {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .nl-intervention-footer {
+        align-items: flex-start;
+        text-align: left;
+        margin-top: var(--space-sm);
+    }
+}
+
+/* --- PAGE STYLE: work.css --- */
+/* 
+   Work Page Styles - New Leaf
+   Focus: Flowing Deck, Sticky Interaction, Immersive Scroll
+*/
+
+/* 1. Work Intro & Filter UI */
+.nl-work-intro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../assets/img/verdant.webp');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.nl-work-intro h1,
+.nl-work-intro .nl-intro-text,
+.nl-work-intro .nl-eyebrow {
+    color: var(--color-text-light);
+}
+
+.work-hero-reveal {
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+.work-hero-reveal.is-revealed {
+    opacity: 1;
+}
+
+.nl-work-filter {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.nl-filter-btn {
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.7); 
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.nl-filter-btn:hover,
+.nl-filter-btn.is-active {
+    color: var(--color-text-light);
+    border-bottom-color: var(--color-text-light);
+}
+
+/* 2. The Flowing Deck (Sticky Stack) */
+.nl-deck-container {
+    position: relative;
+    padding-bottom: 10vh; /* Space at end */
+}
+
+.nl-deck-card {
+    position: sticky;
+    top: 120px; /* Default sticky top (below header) */
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-2xl); /* Space between cards in flow */
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.05); /* Suggest depth upwards */
+    height: 600px; /* Fixed height for consistent stacking */
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    transform-origin: center top;
+    transition: transform 0.1s linear; /* Smooth micro-interactions if needed */
+}
+
+/* Staggered Tops for Stacking Effect based on index provided in HTML or simple nth-child */
+.nl-deck-card:nth-child(1) { top: 100px; }
+.nl-deck-card:nth-child(2) { top: 120px; }
+.nl-deck-card:nth-child(3) { top: 140px; }
+.nl-deck-card:nth-child(4) { top: 160px; }
+.nl-deck-card:nth-child(5) { top: 180px; }
+.nl-deck-card:nth-child(6) { top: 200px; }
+.nl-deck-card:nth-child(7) { top: 220px; }
+
+/* In case of more items, they just stack at 200px or loop styles via JS, but CSS covers most cases */
+
+.nl-deck-media {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid var(--color-border);
+    /* For Overlay Button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Redesigned Overlay Button */
+.nl-case-overlay-btn {
+    position: absolute;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-standard);
+    
+    /* Readable High-Contrast Style */
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 100px; /* Capsule shape */
+    
+    /* Typography */
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nl-case-overlay-btn::after {
+    content: '→';
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.nl-case-overlay-btn:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    transform: translateY(0) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.nl-case-overlay-btn:hover::after {
+    transform: translateX(4px);
+}
+
+.nl-deck-card:hover .nl-case-overlay-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nl-deck-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Darker overlay for better text readability */
+    background: rgba(0, 0, 0, 0.4); 
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+    backdrop-filter: blur(2px); /* Slight blur helps text pop */
+}
+
+.nl-deck-card:hover .nl-deck-media::after {
+    opacity: 1;
+}
+
+/* Critical Fix: Reset transform context for fixed modal */
+/* Case Study Reading Mode State */
+.nl-deck-card.is-reading {
+    position: static !important; /* CRITICAL: Static position releases the fixed child from the card's stacking context */
+    height: auto !important; 
+    min-height: 80vh; 
+    grid-template-columns: 1fr; 
+    overflow: visible !important;
+    z-index: 1000 !important;
+    margin-bottom: var(--space-3xl);
+    transform: none !important;
+    transition: none !important;
+}
+
+.nl-deck-card.is-reading .nl-deck-media,
+.nl-deck-card.is-reading .nl-deck-content {
+    display: none !important; /* Hide summary view when reading */
+}
+
+
+.nl-deck-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.nl-deck-card:hover .nl-deck-img {
+    transform: scale(1.03);
+}
+
+.nl-deck-content {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nl-deck-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nl-deck-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-4xl);
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.nl-deck-desc {
+    font-size: var(--fs-lg);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+    max-width: 45ch;
+}
+
+.nl-demo-disclaimer {
+    display: block;
+    font-size: var(--fs-xs);
+    font-style: italic;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+    margin-top: calc(var(--space-md) * -1); /* Pull up closer to description */
+    margin-bottom: var(--space-lg);
+    max-width: 45ch;
+}
+
+.nl-view-case {
+    align-self: flex-start;
+}
+
+.nl-card-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-top: auto; /* Push to bottom if content is short, though justify-content:center is set on parent */
+    align-self: flex-start;
+}
+
+/* Responsive: Disable sticky on mobile for better usability */
+@media (max-width: 1100px) {
+    .nl-deck-card {
+        height: auto;
+        min-height: 500px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 1fr;
+    }
+    
+    .nl-deck-media {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+@media (max-width: 768px) {
+    .nl-deck-card {
+        position: relative; /* Unlock sticky */
+        top: auto !important; /* Reset staggered tops */
+        margin-bottom: var(--space-xl);
+        grid-template-rows: 250px auto;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .nl-deck-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .nl-deck-content {
+        padding: var(--space-lg);
+    }
+}
+
+/* --- Case Study Reading Mode --- */
+
+.nl-case-study-view {
+    position: fixed; /* Take over the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg-alt); 
+    z-index: 10000; /* Above everything including header */
+    display: none; /* Hide by default */
+    flex-direction: column;
+    touch-action: manipulation;
+}
+
+.nl-deck-card.is-reading .nl-case-study-view {
+    display: flex; /* Show when reading */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.nl-close-case-btn {
+    position: fixed; /* Pinned to viewport */
+    top: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-alt);
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    z-index: 10100;
+    transition: all var(--transition-fast);
+    touch-action: manipulation;
+}
+
+.nl-close-case-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+    transform: rotate(90deg);
+}
+
+.nl-case-scroll {
+    overflow-y: auto;
+    height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+    padding: var(--space-5xl) var(--space-xl); /* Generous top padding */
+}
+
+.nl-case-body {
+    max-width: 65ch;
+    margin: 0 auto;
+}
+
+.nl-case-body h4 {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.nl-case-body h4:first-child {
+    margin-top: 0;
+}
+
+.nl-case-body p {
+    font-size: var(--fs-lg); /* Premium reading size */
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+}
+
+/* Footer & Next Button */
+.nl-case-footer {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-2xl);
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--space-4xl);
+}
+
+.nl-next-case-btn {
+    min-width: 300px;
+    padding: 1.25rem 3rem;
+    font-weight: 700;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .nl-case-scroll {
+        padding: var(--space-4xl) var(--space-lg);
+    }
+    
+    .nl-case-body p {
+        font-size: var(--fs-md);
+    }
+
+    .nl-close-case-btn {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Class to block background scrolling - applied via JS */
+body.is-reading-case {
+    overflow: hidden !important;
+}
+
+/* Hide Overlay Button when reading */
+.nl-deck-card.is-reading .nl-case-overlay-btn {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Mobile Case Study Button - Adjusted for better spacing */
+.nl-mobile-case-btn {
+    display: none; 
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    padding: 1rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-main);
+    cursor: pointer;
+    margin-bottom: var(--space-md);
+    transition: all var(--transition-standard);
+    border-radius: var(--border-radius-sm);
+    touch-action: manipulation;
+}
+
+.nl-mobile-case-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
+}
+
+@media (max-width: 1100px) {
+    .nl-mobile-case-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nl-deck-content .nl-link-arrow {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: 1px solid var(--color-border);
+        padding: 1rem 1.5rem;
+        font-family: var(--font-body);
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--color-text-main);
+        text-decoration: none;
+        margin-top: 0;
+        transition: all var(--transition-standard);
+        box-sizing: border-box;
+        border-radius: var(--border-radius-sm);
+    }
+
+    .nl-deck-content .nl-link-arrow:hover {
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+        border-color: var(--color-primary);
+    }
+    
+    .nl-deck-content .nl-link-arrow .arrow {
+        margin-left: 8px;
+    }
+
+    .nl-case-overlay-btn {
+        display: none;
+    }
+
+    /* Disable hover/touch effects on image */
+    .nl-deck-card:hover .nl-deck-media::after,
+    .nl-deck-card:active .nl-deck-media::after {
+        opacity: 0;
+    }
+
+    .nl-deck-card:hover .nl-deck-img,
+    .nl-deck-card:active .nl-deck-img {
+        transform: none;
+    }
+}

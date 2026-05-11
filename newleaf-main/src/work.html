@@ -32,6 +32,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="styles/bundle.css?v=75">
     
+    <!-- Preload LCP Image -->
+    <link rel="preload" as="image" href="assets/img/verdant.webp">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/logo.png">
 </head>
@@ -77,10 +80,54 @@
                 <!-- The Flowing Deck -->
                 <div class="nl-deck-container">
 
+                    <!-- Card: Red Stag Roofing -->
+                    <article class="nl-deck-card">
+                        <div class="nl-deck-media">
+                            <img src="assets/img/red-stag.jpg" alt="Red Stag Roofing" class="nl-deck-img" loading="lazy">
+                            <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
+                        </div>
+                        <div class="nl-case-study-view">
+                            <button class="nl-close-case-btn" aria-label="Close Case Study">×</button>
+                            <div class="nl-case-scroll">
+                                <div class="nl-case-body">
+                                        <h4>Context</h4>
+                                        <p>Red Stag Roofing needed a high converting, professional web presence to stand out in the competitive South Carolina market. Their previous setup lacked a strong narrative and failed to guide visitors efficiently toward requesting a quote.</p>
+                                        
+                                        <h4>Constraint</h4>
+                                        <p>The redesign needed to implement a high conversion lead generation strategy without relying on complex backend systems, focusing primarily on local SEO, clear CTAs, and a persistent floating action button to maximize conversion rates across all devices.</p>
+                                        
+                                        <h4>Design Intention</h4>
+                                        <p>The goal was to transform the site from a basic informational page into a sophisticated, UX optimized platform using a modern bento grid layout, integrating social proof and an authoritative company narrative to reduce friction and build trust.</p>
+                                        
+                                        <h4>Solution</h4>
+                                        <p>The website was rebuilt with a performance first approach, prioritizing aggressive optimization and caching strategies. High intent conversion elements were strategically placed, and an internal lead management portal was integrated via n8n webhooks to streamline their sales pipeline directly into Google Sheets.</p>
+                                        
+                                        <h4>Outcome</h4>
+                                        <p>The new platform provides a seamless, conversion oriented user journey, capturing more leads and offering the Red Stag team a highly usable mobile portal for managing their active projects on the go.</p>
+                                        
+                                        <h4>Reflection</h4>
+                                        <p>This project demonstrated the power of combining premium, dynamic design with targeted conversion architecture. By focusing on decision architecture and integrating lightweight lead management tools, the site acts as an active sales asset rather than just a digital brochure.</p>
+                                        <div class="nl-case-footer">
+                                            <button class="nl-btn nl-next-case-btn">Next Case Study ↓</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="nl-deck-content">
+                            <div class="nl-deck-meta">
+                                <span>Service Business & Lead Gen</span> / <span>2026</span>
+                            </div>
+                            <h3 class="nl-deck-title">Red Stag Roofing</h3>
+                            <p class="nl-deck-desc">High converting local service website featuring dynamic lead generation and custom internal management tools.</p>
+                            <button class="nl-mobile-case-btn">View Case Study</button>
+                            <a href="https://redstagroofingsc.com/" class="nl-link-arrow" target="_blank">Visit Live Site <span class="arrow">→</span></a>
+                        </div>
+                    </article>
+
                     <!-- Card 01 -->
                     <article class="nl-deck-card">
                         <div class="nl-deck-media">
-                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200" alt="Hammock Coast Safe Shores" class="nl-deck-img">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200" alt="Hammock Coast Safe Shores" class="nl-deck-img" loading="lazy">
                             <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
                         </div>
                         <div class="nl-case-study-view">
@@ -123,7 +170,7 @@
                     <!-- Card 02 -->
                     <article class="nl-deck-card">
                         <div class="nl-deck-media">
-                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=1200" alt="Cat Daddy's" class="nl-deck-img">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=1200" alt="Cat Daddy's" class="nl-deck-img" loading="lazy">
                             <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
                         </div>
                         <div class="nl-case-study-view">
@@ -167,7 +214,7 @@
                     <!-- Card 03 -->
                     <article class="nl-deck-card">
                         <div class="nl-deck-media">
-                            <img src="assets/img/civic-infra.webp" alt="Civic Infrastructure Group" class="nl-deck-img">
+                            <img src="assets/img/civic-infra.webp" alt="Civic Infrastructure Group" class="nl-deck-img" loading="lazy">
                             <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
                         </div>
                         <div class="nl-case-study-view">
@@ -211,7 +258,7 @@
                     <!-- Card 04 -->
                     <article class="nl-deck-card">
                         <div class="nl-deck-media">
-                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200" alt="Coffee Products Showcase" class="nl-deck-img">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200" alt="Coffee Products Showcase" class="nl-deck-img" loading="lazy">
                             <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
                         </div>
                         <div class="nl-case-study-view">
@@ -256,7 +303,7 @@
                     <!-- Card 05 -->
                     <article class="nl-deck-card">
                         <div class="nl-deck-media">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" alt="Sandstone Development" class="nl-deck-img">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" alt="Sandstone Development" class="nl-deck-img" loading="lazy">
                             <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
                         </div>
                         <div class="nl-case-study-view">
@@ -301,7 +348,7 @@
                     <!-- Card 06 -->
                     <article class="nl-deck-card">
                         <div class="nl-deck-media">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200" alt="Sea Glass Venue" class="nl-deck-img">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200" alt="Sea Glass Venue" class="nl-deck-img" loading="lazy">
                             <button class="nl-btn nl-case-overlay-btn">View Case Study</button>
                         </div>
                         <div class="nl-case-study-view">
@@ -344,8 +391,6 @@
                         </div>
                     </article>
 
-
-                    
                 </div>
             </div>
         </section>
